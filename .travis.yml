@@ -1,0 +1,21 @@
+language: java
+jdk:
+- oraclejdk8
+os:
+- linux
+branches:
+  only:
+  - dev
+  - coverity_scan
+env:
+  global:
+    secure: JBPvTE+7g7FhS1HdvLyNx1eBJBTE9DHmqU3kQNKz87lBp83etXMl/tNWH8P2LAKGIewmu/Oh7WpS1nr4CtnU1DhNIlPIaSaMTwkowodGwTOlAA+Iat6yRbxnS+5b+ev+PjtcJ/JF20buwUPiMNDWIU+qKIHaqnYhW6kdt6bedcQ=
+addons:
+  coverity_scan:
+    project:
+      name: dannil/UrlDatabind
+      description: Build submitted via Travis CI
+    notification_email: bobkant-fyrsvamp@hotmail.com
+    build_command_prepend: mvn clean
+    build_command: mvn -DskipTests=true compile
+    branch_pattern: coverity_scan
