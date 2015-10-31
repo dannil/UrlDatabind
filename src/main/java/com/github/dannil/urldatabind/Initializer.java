@@ -1,6 +1,6 @@
 package com.github.dannil.urldatabind;
 
-import static spark.SparkBase.port;
+import static spark.Spark.port;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 
