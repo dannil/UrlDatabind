@@ -26,7 +26,7 @@ public class Router {
 
 	public void loadRoutes() {
 		for (Bind<?> b : this.bindController.getBinds()) {
-			get(b.getPath(), (request, response) -> createRoute(request, response, b));
+			get(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
 		}
 		// get("/", (request, response) -> "Hello World!");
 	}
