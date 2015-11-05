@@ -70,7 +70,7 @@ public abstract class Bind<E> {
 		if (!(obj instanceof Bind)) {
 			return false;
 		}
-		Bind other = (Bind) obj;
+		Bind<?> other = (Bind<?>) obj;
 		if (this.content == null) {
 			if (other.content != null) {
 				return false;
