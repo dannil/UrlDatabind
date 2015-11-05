@@ -63,8 +63,10 @@ public class JsonBindUnitTest {
 
 	@Test
 	public void getHttpContent() {
-		// TODO Auto-generated method stub
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
 
+		assertEquals("\"en_US\"", jsonBind.getHttpContent());
 	}
 
 	@Test
