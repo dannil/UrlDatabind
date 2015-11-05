@@ -9,10 +9,14 @@ public class XmlBuilder implements IBuilder {
 	// private Serializer serializer;
 	// private OutputStream baos;
 
+	private String xmlHeader;
+
 	private XStream xstream;
 
 	public XmlBuilder() {
 		// this.serializer = new Persister();
+		this.xmlHeader = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+
 		this.xstream = new XStream();
 	}
 
@@ -20,7 +24,7 @@ public class XmlBuilder implements IBuilder {
 	public Object generate(Bind<?> bind) {
 		Class<?> clazz = bind.getContent().getClass();
 		this.xstream.alias(clazz.getSimpleName().toLowerCase(), clazz);
-		return this.xstream.toXML(bind.getContent());
+		return this.xmlHeader + "\n" + this.xstream.toXML(bind.getContent());
 
 		// this.baos = new ByteArrayOutputStream();
 		// try {
