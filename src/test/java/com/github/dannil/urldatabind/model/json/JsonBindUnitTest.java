@@ -68,6 +68,22 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	public void getType() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
+
+		assertEquals(Type.JSON, jsonBind.getType());
+	}
+
+	@Test
+	public void getHttpType() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
+
+		assertEquals("application/json", jsonBind.getHttpType());
+	}
+
+	@Test
 	public void toJson() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
