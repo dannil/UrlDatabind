@@ -14,9 +14,10 @@ import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 
 @RunWith(JUnit4.class)
-public class JsonBindUnitTest {
+public class JsonBindUnitTest implements IBindUnitTest {
 
 	@Test
+	@Override
 	public void createWithConstructor() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -25,6 +26,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void getPath() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -33,6 +35,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void setPath() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -43,6 +46,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void getContent() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -51,6 +55,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void setContent() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -62,6 +67,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void getHttpContent() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -70,6 +76,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void getType() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -78,6 +85,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void getHttpType() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -86,6 +94,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void toJson() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
@@ -96,6 +105,7 @@ public class JsonBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void toXml() {
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
