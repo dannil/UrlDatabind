@@ -3,6 +3,8 @@ package com.github.dannil.urldatabind;
 import static spark.Spark.port;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
+import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 
 public class Initializer {
 
@@ -12,8 +14,8 @@ public class Initializer {
 		Initializer initializer = new Initializer();
 		initializer.loadModules();
 
-		Router router = Router.getInstance();
-		router.loadRoutes();
+		Bind<String> b1 = new JsonBind<String>("/test", "this is a test");
+		Bind<String> b2 = new JsonBind<String>("/test1", "this is a test1");
 	}
 
 	public void loadModules() {
@@ -23,6 +25,10 @@ public class Initializer {
 		// Create the format builder instance
 		// FormatBuilder formatBuilder = FormatBuilder.getInstance();
 		FormatBuilder.getInstance();
+
+		// Create the router instance and load the routes
+		Router router = Router.getInstance();
+		router.loadRoutes();
 	}
 
 }
