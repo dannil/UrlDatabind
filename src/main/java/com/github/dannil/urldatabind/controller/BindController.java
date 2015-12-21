@@ -3,7 +3,6 @@ package com.github.dannil.urldatabind.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dannil.urldatabind.Router;
 import com.github.dannil.urldatabind.model.Animal;
 import com.github.dannil.urldatabind.model.bind.Bind;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
@@ -57,11 +56,6 @@ public class BindController {
 
 	public List<Bind<?>> getBinds() {
 		return this.binds;
-	}
-
-	public void loadBinds() {
-		Router router = Router.getInstance();
-		router.loadRoutes();
 	}
 
 }
