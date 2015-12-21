@@ -1,4 +1,4 @@
-package com.github.dannil.urldatabind.model.json;
+package com.github.dannil.urldatabind.model.bind.json;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
