@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
@@ -69,36 +70,52 @@ public class XmlBindUnitTest implements IBindUnitTest {
 	@Test
 	@Override
 	public void getHttpContent() {
-		// TODO Auto-generated method stub
-		
+		Locale locale = new Locale("en", "US");
+		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", locale);
+
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<locale>en_US</locale>", xmlBind.getHttpContent());
 	}
 
 	@Test
 	@Override
 	public void getType() {
-		// TODO Auto-generated method stub
-		
+		Locale locale = new Locale("en", "US");
+		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", locale);
+
+		assertEquals(Type.XML, xmlBind.getType());
 	}
 
 	@Test
 	@Override
 	public void getHttpType() {
-		// TODO Auto-generated method stub
-		
+		Locale locale = new Locale("en", "US");
+		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", locale);
+
+		assertEquals("application/xml", xmlBind.getHttpType());
 	}
 
 	@Test
 	@Override
 	public void toJson() {
-		// TODO Auto-generated method stub
-		
+		Locale locale = new Locale("en", "US");
+		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", locale);
+
+		JsonBind<Locale> jsonBind = xmlBind.toJson();
+
+		assertEquals(xmlBind.getContent(), jsonBind.getContent());
+		assertEquals(xmlBind.getPath(), jsonBind.getPath());
+		assertEquals(Type.JSON, jsonBind.getType());
 	}
 
 	@Test
 	@Override
 	public void toXml() {
-		// TODO Auto-generated method stub
-		
+		Locale locale = new Locale("en", "US");
+		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", locale);
+
+		XmlBind<Locale> newXmlBind = xmlBind.toXml();
+
+		assertEquals(xmlBind, newXmlBind);
 	}
 
 }
