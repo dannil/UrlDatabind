@@ -54,11 +54,7 @@ public abstract class Bind<E> {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((this.content == null) ? 0 : this.content.hashCode());
-		result = prime * result + ((this.path == null) ? 0 : this.path.hashCode());
-		return result;
+		return Objects.hash(this.path, this.content);
 	}
 
 	@Override
