@@ -1,5 +1,7 @@
 package com.github.dannil.urldatabind.model.bind;
 
+import java.util.Objects;
+
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
@@ -70,22 +72,9 @@ public abstract class Bind<E> {
 		if (!(obj instanceof Bind)) {
 			return false;
 		}
+
 		Bind<?> other = (Bind<?>) obj;
-		if (this.content == null) {
-			if (other.content != null) {
-				return false;
-			}
-		} else if (!this.content.equals(other.content)) {
-			return false;
-		}
-		if (this.path == null) {
-			if (other.path != null) {
-				return false;
-			}
-		} else if (!this.path.equals(other.path)) {
-			return false;
-		}
-		return true;
+		return Objects.equals(this.path, other.path) && Objects.equals(this.content, other.content);
 	}
 
 }
