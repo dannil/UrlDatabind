@@ -1,6 +1,7 @@
 package com.github.dannil.urldatabind.model.bind.json;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
@@ -10,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 
@@ -117,4 +117,59 @@ public class JsonBindUnitTest implements IBindUnitTest {
 		assertEquals(jsonBind.getPath(), xmlBind.getPath());
 		assertEquals(Type.XML, xmlBind.getType());
 	}
+
+	@Test
+	public void equals() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test", locale);
+		JsonBind<Locale> b2 = new JsonBind<Locale>("test", locale);
+
+		assertEquals(b1, b2);
+	}
+
+	@Test
+	public void equalsItself() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test", locale);
+
+		assertEquals(b1, b1);
+	}
+
+	@Test
+	public void equalsNull() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test", locale);
+		JsonBind<Locale> b2 = null;
+
+		assertNotEquals(b1, b2);
+	}
+
+	@Test
+	public void notEqualsIncompatible() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test1", locale);
+
+		assertNotEquals(b1, locale);
+	}
+
+	@Test
+	public void notEqualsPath() {
+		Locale locale = new Locale("en", "US");
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test1", locale);
+		JsonBind<Locale> b2 = new JsonBind<Locale>("test2", locale);
+
+		assertNotEquals(b1, b2);
+	}
+
+	@Test
+	public void notEqualsContent() {
+		Locale locale1 = new Locale("en", "US");
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test1", locale1);
+
+		Locale locale2 = new Locale("sv", "SE");
+		JsonBind<Locale> b2 = new JsonBind<Locale>("test1", locale2);
+
+		assertNotEquals(b1, b2);
+	}
+
 }
