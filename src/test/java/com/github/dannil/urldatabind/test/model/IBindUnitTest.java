@@ -8,6 +8,10 @@ public interface IBindUnitTest {
 
 	void setPath();
 
+	void getRequestMethod();
+
+	void setRequestMethod();
+
 	void getContent();
 
 	void setContent();

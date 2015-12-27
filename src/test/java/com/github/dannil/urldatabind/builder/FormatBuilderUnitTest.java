@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 
 @RunWith(JUnit4.class)
@@ -26,7 +27,7 @@ public class FormatBuilderUnitTest {
 		FormatBuilder formatBuilder = FormatBuilder.getInstance();
 
 		Locale locale = new Locale("en", "US");
-		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
+		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
 		assertEquals("\"en_US\"", formatBuilder.getHttpFormat(jsonBind.getType(), jsonBind));
 	}
@@ -36,7 +37,7 @@ public class FormatBuilderUnitTest {
 		FormatBuilder formatBuilder = FormatBuilder.getInstance();
 
 		Locale locale = new Locale("en", "US");
-		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
+		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
 		formatBuilder.getHttpFormat(null, jsonBind);
 	}

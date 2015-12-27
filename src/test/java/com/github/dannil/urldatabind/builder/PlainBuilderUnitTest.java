@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 
@@ -20,7 +21,7 @@ public class PlainBuilderUnitTest {
 		IBuilder plainBuilder = new PlainBuilder();
 
 		Locale locale = new Locale("en", "US");
-		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", locale);
+		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
 		assertNotNull(plainBuilder.generate(jsonBind));
 	}
