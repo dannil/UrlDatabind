@@ -1,17 +1,17 @@
 package com.github.dannil.urldatabind;
 
 import static spark.Spark.get;
+
+import java.util.Collection;
+
 import spark.Request;
 import spark.Response;
 
-import com.github.dannil.urldatabind.controller.BindController;
 import com.github.dannil.urldatabind.model.bind.Bind;
 
 public class Router {
 
 	private static Router router;
-
-	private BindController bindController;
 
 	public static Router getInstance() {
 		if (router == null) {
@@ -21,13 +21,18 @@ public class Router {
 	}
 
 	private Router() {
-		this.bindController = BindController.getInstance();
+
 	}
 
-	public void loadRoutes() {
-		for (Bind<?> b : this.bindController.getBinds()) {
+	public void createRoute(Collection<Bind<?>> binds) {
+		for (Bind<?> b : binds) {
 			get(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
 		}
+
+		// for (Bind<?> b : this.bindController.getBinds()) {
+		// get(b.getPath(), b.getHttpType(), (request, response) ->
+		// createRoute(request, response, b));
+		// }
 		// get("/", (request, response) -> "Hello World!");
 	}
 
