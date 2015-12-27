@@ -1,61 +1,60 @@
 package com.github.dannil.urldatabind.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
-import com.github.dannil.urldatabind.model.Animal;
+import com.github.dannil.urldatabind.Router;
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.bind.Bind;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
-import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 
 public class BindController {
 
-	private static BindController bindController;
+	// private List<Bind<?>> binds;
+	private Map<String, Bind<?>> binds;
 
-	private List<Bind<?>> binds;
+	private Router router;
 
-	public static BindController getInstance() {
-		if (bindController == null) {
-			bindController = new BindController();
-		}
-		return bindController;
-	}
+	public BindController() {
+		// this.binds = new ArrayList<Bind<?>>();
+		this.binds = new HashMap<String, Bind<?>>();
 
-	private BindController() {
-		this.binds = new ArrayList<Bind<?>>();
+		this.router = Router.getInstance();
 
-		Animal a1 = new Animal("Bob", 12);
-		Bind<Animal> b1 = new JsonBind<Animal>("json/animals/bob", a1);
+		Locale l1 = new Locale("en", "US");
+		Bind<Locale> b1 = new JsonBind<Locale>("json/locale/en", RequestMethod.GET, l1);
 		addBind(b1);
-
-		Bind<Animal> b2 = new XmlBind<Animal>("xml/animals/bob", a1);
-		addBind(b2);
-
-		Animal a2 = new Animal("Annie", 8);
-		Bind<Animal> b3 = new JsonBind<Animal>("json/animals/annie", a2);
-		addBind(b3);
-
-		Bind<Animal> b4 = new XmlBind<Animal>("xml/animals/annie", a2);
-		addBind(b4);
 	}
 
 	public void addBind(Bind<?> bind) {
-		for (Bind<?> b : this.binds) {
-			if (b.getPath().equals(bind.getPath())) {
-				throw new IllegalArgumentException(String.format("A bind with path %s already exists", bind.getPath()));
-			}
+		if (this.binds.containsKey(bind.getPath())) {
+			throw new IllegalArgumentException(String.format("A bind with path %s already exists", bind.getPath()));
 		}
-		this.binds.add(bind);
+		this.binds.put(bind.getPath(), bind);
+		// for (Bind<?> b : this.binds) {
+		// if (b.getPath().equals(bind.getPath())) {
+		// throw new
+		// IllegalArgumentException(String.format("A bind with path %s already exists",
+		// bind.getPath()));
+		// }
+		// }
+		// this.binds.add(bind);
 	}
 
-	public void addBinds(List<Bind<?>> binds) {
+	public void addBinds(Collection<Bind<?>> binds) {
 		for (Bind<?> bind : binds) {
 			this.addBind(bind);
 		}
 	}
 
-	public List<Bind<?>> getBinds() {
+	public Map<String, Bind<?>> getBinds() {
 		return this.binds;
 	}
+
+	// public List<Bind<?>> getBinds() {
+	// return this.binds;
+	// }
 
 }
