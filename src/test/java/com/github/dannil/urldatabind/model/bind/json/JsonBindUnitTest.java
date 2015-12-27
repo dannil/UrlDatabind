@@ -147,7 +147,7 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	@Test
 	public void notEqualsIncompatible() {
 		Locale locale = new Locale("en", "US");
-		JsonBind<Locale> b1 = new JsonBind<Locale>("test1", locale);
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test", locale);
 
 		assertNotEquals(b1, locale);
 	}
@@ -164,10 +164,10 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	@Test
 	public void notEqualsContent() {
 		Locale locale1 = new Locale("en", "US");
-		JsonBind<Locale> b1 = new JsonBind<Locale>("test1", locale1);
+		JsonBind<Locale> b1 = new JsonBind<Locale>("test", locale1);
 
 		Locale locale2 = new Locale("sv", "SE");
-		JsonBind<Locale> b2 = new JsonBind<Locale>("test1", locale2);
+		JsonBind<Locale> b2 = new JsonBind<Locale>("test", locale2);
 
 		assertNotEquals(b1, b2);
 	}
