@@ -63,7 +63,7 @@ public class XmlBindUnitTest implements IBindUnitTest {
 
 		xmlBind.setRequestMethod(RequestMethod.POST);
 
-		assertEquals(RequestMethod.GET, xmlBind.getRequestMethod());
+		assertEquals(RequestMethod.POST, xmlBind.getRequestMethod());
 	}
 
 	@Test
