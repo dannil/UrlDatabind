@@ -3,6 +3,7 @@ package com.github.dannil.urldatabind.model.bind;
 import java.util.Objects;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
@@ -10,14 +11,16 @@ import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 public abstract class Bind<E> {
 
 	protected String path;
+	protected RequestMethod requestMethod;
 	protected E content;
 
 	public abstract Type getType();
 
 	public abstract String getHttpType();
 
-	protected Bind(String path, E content) {
+	protected Bind(String path, RequestMethod requestMethod, E content) {
 		this.path = path;
+		this.requestMethod = requestMethod;
 		this.content = content;
 	}
 
@@ -27,6 +30,14 @@ public abstract class Bind<E> {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public RequestMethod getRequestMethod() {
+		return this.requestMethod;
+	}
+
+	public void setRequestMethod(RequestMethod requestMethod) {
+		this.requestMethod = requestMethod;
 	}
 
 	public E getContent() {
@@ -43,18 +54,18 @@ public abstract class Bind<E> {
 	}
 
 	public JsonBind<E> toJson() {
-		JsonBind<E> bind = new JsonBind<E>(this.path, this.content);
+		JsonBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
 
 	public XmlBind<E> toXml() {
-		XmlBind<E> bind = new XmlBind<E>(this.path, this.content);
+		XmlBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.path, this.content);
+		return Objects.hash(this.path, this.requestMethod, this.content);
 	}
 
 	@Override
@@ -70,7 +81,7 @@ public abstract class Bind<E> {
 		}
 
 		Bind<?> other = (Bind<?>) obj;
-		return Objects.equals(this.path, other.path) && Objects.equals(this.content, other.content);
+		return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod) && Objects.equals(this.content, other.content);
 	}
 
 }

@@ -1,12 +1,13 @@
 package com.github.dannil.urldatabind.model.bind.xml;
 
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.Bind;
 
 public class XmlBind<E> extends Bind<E> {
 
-	public XmlBind(String path, E content) {
-		super(path, content);
+	public XmlBind(String path, RequestMethod requestMethod, E content) {
+		super(path, requestMethod, content);
 		// TODO Auto-generated constructor stub
 	}
 

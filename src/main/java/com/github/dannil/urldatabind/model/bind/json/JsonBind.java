@@ -1,12 +1,13 @@
 package com.github.dannil.urldatabind.model.bind.json;
 
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.Bind;
 
 public class JsonBind<E> extends Bind<E> {
 
-	public JsonBind(String path, E content) {
-		super(path, content);
+	public JsonBind(String path, RequestMethod requestMethod, E content) {
+		super(path, requestMethod, content);
 		// TODO Auto-generated constructor stub
 	}
 
