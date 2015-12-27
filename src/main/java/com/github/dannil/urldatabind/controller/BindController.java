@@ -1,9 +1,9 @@
 package com.github.dannil.urldatabind.controller;
 
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
-import java.util.Map;
+import java.util.Set;
 
 import com.github.dannil.urldatabind.Router;
 import com.github.dannil.urldatabind.model.RequestMethod;
@@ -13,13 +13,13 @@ import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 public class BindController {
 
 	// private List<Bind<?>> binds;
-	private Map<String, Bind<?>> binds;
+	private Set<Bind<?>> binds;
 
 	private Router router;
 
 	public BindController() {
 		// this.binds = new ArrayList<Bind<?>>();
-		this.binds = new HashMap<String, Bind<?>>();
+		this.binds = new HashSet<Bind<?>>();
 
 		this.router = Router.getInstance();
 
@@ -29,10 +29,10 @@ public class BindController {
 	}
 
 	public void addBind(Bind<?> bind) {
-		if (this.binds.containsKey(bind.getPath())) {
+		if (this.binds.contains(bind)) {
 			throw new IllegalArgumentException(String.format("A bind with path %s already exists", bind.getPath()));
 		}
-		this.binds.put(bind.getPath(), bind);
+		this.binds.add(bind);
 		// for (Bind<?> b : this.binds) {
 		// if (b.getPath().equals(bind.getPath())) {
 		// throw new
@@ -49,7 +49,7 @@ public class BindController {
 		}
 	}
 
-	public Map<String, Bind<?>> getBinds() {
+	public Set<Bind<?>> getBinds() {
 		return this.binds;
 	}
 
