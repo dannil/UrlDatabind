@@ -30,7 +30,7 @@ public class BindController {
 
 	public void addBind(Bind<?> bind) {
 		if (this.binds.contains(bind)) {
-			throw new IllegalArgumentException(String.format("A bind with path %s already exists", bind.getPath()));
+			throw new IllegalArgumentException(String.format("The bind %s %s already exists", bind.getRequestMethod(), bind.getPath()));
 		}
 		this.binds.add(bind);
 		// for (Bind<?> b : this.binds) {
