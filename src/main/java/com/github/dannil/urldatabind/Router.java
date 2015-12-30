@@ -2,9 +2,6 @@ package com.github.dannil.urldatabind;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
-
-import java.util.Collection;
-
 import spark.Request;
 import spark.Response;
 
@@ -25,28 +22,20 @@ public class Router {
 
 	}
 
-	public void createRoute(Collection<Bind<?>> binds) {
-		for (Bind<?> b : binds) {
-			switch (b.getRequestMethod()) {
-				case GET:
-					get(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
-					break;
+	public void createRoute(Bind<?> bind) {
+		switch (bind.getRequestMethod()) {
+			case GET:
+				get(bind.getPath(), bind.getHttpType(), (request, response) -> createRoute(request, response, bind));
+				break;
 
-				case POST:
-					post(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
-					break;
+			case POST:
+				post(bind.getPath(), bind.getHttpType(), (request, response) -> createRoute(request, response, bind));
+				break;
 
-				default:
-					break;
+			default:
+				break;
 
-			}
 		}
-
-		// for (Bind<?> b : this.bindController.getBinds()) {
-		// get(b.getPath(), b.getHttpType(), (request, response) ->
-		// createRoute(request, response, b));
-		// }
-		// get("/", (request, response) -> "Hello World!");
 	}
 
 	private Object createRoute(Request req, Response res, Bind<?> b) {
