@@ -81,7 +81,7 @@ public abstract class Bind<E> {
 		}
 
 		Bind<?> other = (Bind<?>) obj;
-		return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod) && Objects.equals(this.content, other.content);
+		return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod);
 	}
 
 }
