@@ -1,6 +1,7 @@
 package com.github.dannil.urldatabind;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 import java.util.Collection;
 
@@ -26,7 +27,19 @@ public class Router {
 
 	public void createRoute(Collection<Bind<?>> binds) {
 		for (Bind<?> b : binds) {
-			get(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
+			switch (b.getRequestMethod()) {
+				case GET:
+					get(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
+					break;
+
+				case POST:
+					post(b.getPath(), b.getHttpType(), (request, response) -> createRoute(request, response, b));
+					break;
+
+				default:
+					break;
+
+			}
 		}
 
 		// for (Bind<?> b : this.bindController.getBinds()) {
