@@ -65,7 +65,7 @@ public abstract class Bind<E> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.path, this.requestMethod, this.content);
+		return Objects.hash(this.path, this.requestMethod);
 	}
 
 	@Override
