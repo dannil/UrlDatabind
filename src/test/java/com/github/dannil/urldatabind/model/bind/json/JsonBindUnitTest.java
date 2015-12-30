@@ -50,8 +50,6 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	@Test
 	@Override
 	public void getRequestMethod() {
-		// TODO Auto-generated method stub
-
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
@@ -61,8 +59,6 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	@Test
 	@Override
 	public void setRequestMethod() {
-		// TODO Auto-generated method stub
-
 		Locale locale = new Locale("en", "US");
 		JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
@@ -195,15 +191,17 @@ public class JsonBindUnitTest implements IBindUnitTest {
 		assertNotEquals(b1, b2);
 	}
 
-	@Test
-	public void notEqualsContent() {
-		Locale locale1 = new Locale("en", "US");
-		JsonBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale1);
-
-		Locale locale2 = new Locale("sv", "SE");
-		JsonBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET, locale2);
-
-		assertNotEquals(b1, b2);
-	}
+	// @Test
+	// public void notEqualsContent() {
+	// Locale locale1 = new Locale("en", "US");
+	// JsonBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET,
+	// locale1);
+	//
+	// Locale locale2 = new Locale("sv", "SE");
+	// JsonBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET,
+	// locale2);
+	//
+	// assertNotEquals(b1, b2);
+	// }
 
 }
