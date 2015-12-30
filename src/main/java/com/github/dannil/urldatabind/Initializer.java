@@ -7,10 +7,13 @@ import com.github.dannil.urldatabind.builder.FormatBuilder;
 public class Initializer {
 
 	public static void main(String[] args) {
-		port(7667);
-
 		Initializer initializer = new Initializer();
+		initializer.loadWebServer();
 		initializer.loadModules();
+	}
+
+	public void loadWebServer() {
+		port(7667);
 	}
 
 	public void loadModules() {
@@ -22,7 +25,7 @@ public class Initializer {
 		FormatBuilder.getInstance();
 
 		// Create the router instance
-		Router router = Router.getInstance();
+		// Router router = Router.getInstance();
 	}
 
 }
