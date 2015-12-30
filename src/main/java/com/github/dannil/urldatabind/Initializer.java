@@ -1,6 +1,8 @@
 package com.github.dannil.urldatabind;
 
+import static spark.Spark.get;
 import static spark.Spark.port;
+import static spark.Spark.threadPool;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 
@@ -13,7 +15,15 @@ public class Initializer {
 	}
 
 	public void loadWebServer() {
-		port(7667);
+		// Define the maximum and minimum number of threads, as well as the
+		// timeout time in milliseconds.
+		threadPool(8, 2, 30000);
+
+		// Start the web server on the defined port
+		port(6776);
+
+		// Hello World!
+		get("/", (request, response) -> "Hello World!");
 	}
 
 	public void loadModules() {
