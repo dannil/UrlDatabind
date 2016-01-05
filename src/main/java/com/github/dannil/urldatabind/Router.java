@@ -33,12 +33,14 @@ public class Router {
 					response.type(httpType);
 					return httpContent;
 				});
+				break;
 
 			case POST:
 				post(path, httpType, (request, response) -> {
 					response.type(httpType);
 					return httpContent;
 				});
+				break;
 
 			default:
 				throw new IllegalArgumentException(requestMethod + " is not a valid request method");
