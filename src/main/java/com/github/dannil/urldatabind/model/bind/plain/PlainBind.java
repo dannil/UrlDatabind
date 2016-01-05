@@ -6,7 +6,7 @@ import com.github.dannil.urldatabind.model.bind.Bind;
 
 public class PlainBind<E> extends Bind<E> {
 
-	protected PlainBind(String path, RequestMethod requestMethod, E content) {
+	public PlainBind(String path, RequestMethod requestMethod, E content) {
 		super(path, requestMethod, content);
 	}
 
