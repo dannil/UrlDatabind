@@ -7,7 +7,7 @@ public class PlainBuilder implements IBuilder {
 
 	@Override
 	public Object generate(Bind<?> bind) {
-		return bind.toString();
+		return bind.getContent().toString();
 	}
 
 	@Override
