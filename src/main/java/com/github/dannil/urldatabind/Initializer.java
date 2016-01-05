@@ -35,7 +35,7 @@ public class Initializer {
 		FormatBuilder.getInstance();
 
 		// Create the router instance
-		// Router router = Router.getInstance();
+		Router.getInstance();
 	}
 
 }
