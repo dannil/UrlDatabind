@@ -5,6 +5,7 @@ import static spark.Spark.post;
 import spark.Request;
 import spark.Response;
 
+import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.bind.Bind;
 
 public class Router {
@@ -23,13 +24,17 @@ public class Router {
 	}
 
 	public void createRoute(Bind<?> bind) {
-		switch (bind.getRequestMethod()) {
+		String path = bind.getPath();
+		String httpType = bind.getHttpType();
+		RequestMethod requestMethod = bind.getRequestMethod();
+
+		switch (requestMethod) {
 			case GET:
-				get(bind.getPath(), bind.getHttpType(), (request, response) -> createRoute(request, response, bind));
+				get(path, httpType, (request, response) -> createRoute(request, response, bind));
 				break;
 
 			case POST:
-				post(bind.getPath(), bind.getHttpType(), (request, response) -> createRoute(request, response, bind));
+				post(path, httpType, (request, response) -> createRoute(request, response, bind));
 				break;
 
 			default:
