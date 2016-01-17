@@ -1,18 +1,37 @@
 package com.github.dannil.urldatabind.builder;
 
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public class PlainBuilder implements IBuilder {
 
+	public PlainBuilder() {
+		// Intentionally left empty
+	}
+
 	@Override
-	public Object generate(Bind<?> bind) {
+	public Object generate(AbstractBind<?> bind) {
 		return bind.getContent().toString();
 	}
 
 	@Override
 	public int hashCode() {
 		return Type.PLAIN.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof PlainBuilder)) {
+			return false;
+		}
+
+		return true;
 	}
 
 }

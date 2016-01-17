@@ -2,9 +2,9 @@ package com.github.dannil.urldatabind.model.bind.json;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
-public class JsonBind<E> extends Bind<E> {
+public class JsonBind<E> extends AbstractBind<E> {
 
 	public JsonBind(String path, RequestMethod requestMethod, E content) {
 		super(path, requestMethod, content);

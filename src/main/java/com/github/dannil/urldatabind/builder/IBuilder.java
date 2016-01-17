@@ -1,10 +1,10 @@
 package com.github.dannil.urldatabind.builder;
 
-import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public interface IBuilder {
 
-	Object generate(Bind<?> bind);
+	Object generate(AbstractBind<?> bind);
 
 	int hashCode();
 

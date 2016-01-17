@@ -6,7 +6,7 @@ import static spark.Spark.threadPool;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 import com.github.dannil.urldatabind.model.RequestMethod;
-import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.plain.PlainBind;
 
 public class Initializer {
@@ -41,7 +41,7 @@ public class Initializer {
 		Router router = Router.getInstance();
 
 		// Create a test route by using the router
-		Bind<String> bind = new PlainBind<String>("/test", RequestMethod.GET, "this is a test");
+		AbstractBind<String> bind = new PlainBind<String>("/test", RequestMethod.GET, "this is a test");
 		router.createRoute(bind);
 	}
 }

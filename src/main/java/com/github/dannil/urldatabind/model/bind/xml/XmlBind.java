@@ -2,9 +2,9 @@ package com.github.dannil.urldatabind.model.bind.xml;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
-public class XmlBind<E> extends Bind<E> {
+public class XmlBind<E> extends AbstractBind<E> {
 
 	public XmlBind(String path, RequestMethod requestMethod, E content) {
 		super(path, requestMethod, content);

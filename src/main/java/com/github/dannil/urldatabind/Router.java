@@ -4,24 +4,28 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
-import com.github.dannil.urldatabind.model.bind.Bind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public class Router {
 
-	private static Router router;
+	private static Router routerInstance;
+
+	private static Object lock = new Object();
 
 	public static Router getInstance() {
-		if (router == null) {
-			router = new Router();
+		synchronized (lock) {
+			if (routerInstance == null) {
+				routerInstance = new Router();
+			}
+			return routerInstance;
 		}
-		return router;
 	}
 
 	private Router() {
 
 	}
 
-	public void createRoute(Bind<?> bind) throws IllegalArgumentException {
+	public void createRoute(AbstractBind<?> bind) throws IllegalArgumentException {
 		String path = bind.getPath();
 		String httpType = bind.getHttpType();
 		RequestMethod requestMethod = bind.getRequestMethod();

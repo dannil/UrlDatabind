@@ -8,7 +8,7 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 
-public abstract class Bind<E> {
+public abstract class AbstractBind<E> {
 
 	protected String path;
 	protected RequestMethod requestMethod;
@@ -18,7 +18,7 @@ public abstract class Bind<E> {
 
 	public abstract String getHttpType();
 
-	protected Bind(String path, RequestMethod requestMethod, E content) {
+	protected AbstractBind(String path, RequestMethod requestMethod, E content) {
 		this.path = path;
 		this.requestMethod = requestMethod;
 		this.content = content;
@@ -76,11 +76,11 @@ public abstract class Bind<E> {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Bind)) {
+		if (!(obj instanceof AbstractBind)) {
 			return false;
 		}
 
-		Bind<?> other = (Bind<?>) obj;
+		AbstractBind<?> other = (AbstractBind<?>) obj;
 		return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod);
 	}
 
