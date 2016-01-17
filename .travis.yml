@@ -5,19 +5,23 @@ os:
 - linux
 branches:
   only:
+  - master
   - dev
   - coverity_scan
+  
+sudo: required
+
 after_success:
-- mvn -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID jacoco:report coveralls:report
+  - mvn jacoco:report
+  - curl http://www.jpm4j.org/install/script > jpmInstall.sh
+  - sudo sh jpmInstall.sh
+  - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
+  - codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml --projectToken $CODACY_PROJECT_TOKEN
+  
 env:
   global:
-    secure: NEvJTNKsrW7RKBPg0U2gG+A04BNIW2sKE4w5ckEmVOLm9KiEJzcR4ortmNTJYdrHwcdydLhZtzE/MYnHF6mGQNsHTBuEI4NimYDWpidyobbp8fGUWGZ/RFAo7KZMClokAamVf1TbSTPMs/xR6ni+1R/nwmpU4cKMxI3tYlvpfPfuHtT9W8s1zxPPF3cf68She3+4ocH71Il3S2Cqbn9sZrk2AOZvnMYR/cM7IcFn+rE/U1zzLeeRfMiqndqGkbyWcnHRjYNjWBE2vOKxUm9EUyraB86/Bd/s3uHyv/jTvHNDRi3U/tqYNkSpwdOT7MwPD2MJRVpKH6uJmtdN0UEr7Wx+RZzw5EQliZPzXMkluU1VjFIX0dwIOkKtuR8LZoC0pa6guPSiLoSRbSYTFEzgxR93Q8/yQLqhgkEaTV/Zd/plvEyP4xpChAh6d6sANJaLhubnTi/p68VNit86N9bkE8+kZ84OCxkbW75m4Ir9lwjo1W2ErzUlJ39iVz09cZ05imSATVGiQ5HApZ/fUNxojNb9fj2qWCe3zBGrvGWhh0hIWDP4I3OBzNJM/4YSpiHHMzMIKDgzQsOQEpaUm2Zs0xmODw8ZUCutUIJZvoBU8YXraNKhbulnv0p0PeZojj0on/xAATibk6QlzyteVmwp7hoBmdxm4vMp2YFtjqbRBqc=
-addons:
-  coverity_scan:
-    project:
-      name: dannil/UrlDatabind
-      description: Build submitted via Travis CI
-    notification_email: daniel.nilsson94@outlook.com
-    build_command_prepend: mvn clean
-    build_command: mvn -DskipTests=true compile
-    branch_pattern: coverity_scan
+    secure: "Am632BzY69bBX0M0m2o7RzfAJCiEeOVMAf+xA/fxj3cyN3CnJEvWHU8z/c1hpqyYIVgKLP20g6NKzQJspCYesADSngziQZyQ79+PT64mZzR+FGZUh4q1PpAsSyJtl7+NHH+aLyn6cj+2rB9HnqMhC
+			 Qy0GS6+3rIjz0dF+TcApTlCnrv/rDMt4inguoGcSix0ZimgKjnLP4TEnUi+xlYKXEjNjHab69PqfGdIN1k9g1mdtrH8r96F24mwxsQfAe+owz7iGfOV2JCB2QhgVYfWgzIFv9hbdWavpZbGUZ31R4orY/xHIF9hI
+			 UemKUCic5ZQVpK69EpcR5apK1han6bGGega86qAw+k/PfStJrWHmIINsBlTYX92ddFCxuiKtkFkMEm+37Y/6D80SNxn/87dkUWupNEQ3S8s6xzW7O6LROqxbjvTNeE7zG742fONU1qGDVQLbkSY3IIYjLVylQtT5
+			 i8RdrdXRpw9hvB5nEtDs8oCcEdj/jMCpbfMJyJnnKfSq2c3w0XnDyKie3fTleRlalbRq7ail+xXvlkwvxW8rPrgQzy5dBzzQHQ+BlzhXjNsp63OKbIeqTOe+hWYE5dtas8WPdvtz88I0Av6vQnx17vlFIEcbfNQJ
+			 uPviqvilImacIYDcfgBNGyz3fklToxLlBBqp3jKil4F0y82gs4Dyw0="
