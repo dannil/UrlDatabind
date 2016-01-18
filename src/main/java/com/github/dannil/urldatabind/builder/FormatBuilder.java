@@ -1,6 +1,6 @@
 package com.github.dannil.urldatabind.builder;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import com.github.dannil.urldatabind.model.Type;
@@ -30,7 +30,7 @@ public class FormatBuilder {
 		// this.jsonBuilder = new JsonBuilder();
 		// this.xmlBuilder = new XmlBuilder();
 
-		this.builders = new HashMap<Type, IBuilder>();
+		this.builders = new EnumMap<Type, IBuilder>(Type.class);
 		this.builders.put(Type.JSON, new JsonBuilder());
 		this.builders.put(Type.PLAIN, new PlainBuilder());
 		this.builders.put(Type.XML, new XmlBuilder());
