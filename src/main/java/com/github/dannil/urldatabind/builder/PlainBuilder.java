@@ -28,7 +28,7 @@ public class PlainBuilder implements IBuilder {
 			return false;
 		}
 
-		return !(obj instanceof PlainBuilder);
+		return obj instanceof PlainBuilder;
 		// if (!(obj instanceof PlainBuilder)) {
 		// return false;
 		// }

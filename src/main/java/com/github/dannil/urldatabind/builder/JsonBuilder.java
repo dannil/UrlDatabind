@@ -32,7 +32,7 @@ public class JsonBuilder implements IBuilder {
 			return false;
 		}
 
-		return !(obj instanceof JsonBuilder);
+		return obj instanceof JsonBuilder;
 		// if (!(obj instanceof JsonBuilder)) {
 		// return false;
 		// }
