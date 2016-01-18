@@ -31,11 +31,13 @@ public class JsonBuilder implements IBuilder {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof JsonBuilder)) {
-			return false;
-		}
 
-		return true;
+		return (!(obj instanceof JsonBuilder));
+		// if (!(obj instanceof JsonBuilder)) {
+		// return false;
+		// }
+		//
+		// return true;
 	}
 
 }

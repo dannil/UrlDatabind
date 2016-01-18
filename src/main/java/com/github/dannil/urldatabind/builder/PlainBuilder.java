@@ -5,10 +5,6 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public class PlainBuilder implements IBuilder {
 
-	public PlainBuilder() {
-		// Intentionally left empty
-	}
-
 	@Override
 	public Object generate(AbstractBind<?> bind) {
 		return bind.getContent().toString();
@@ -27,11 +23,13 @@ public class PlainBuilder implements IBuilder {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof PlainBuilder)) {
-			return false;
-		}
 
-		return true;
+		return (!(obj instanceof PlainBuilder));
+		// if (!(obj instanceof PlainBuilder)) {
+		// return false;
+		// }
+		//
+		// return true;
 	}
 
 }
