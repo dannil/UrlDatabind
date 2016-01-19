@@ -13,7 +13,6 @@ import org.junit.runners.JUnit4;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
-import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 
@@ -123,7 +122,7 @@ public class PlainBindUnitTest implements IBindUnitTest {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
 
-		JsonBind<Locale> newBind = bind.toJson();
+		AbstractBind<Locale> newBind = bind.toJson();
 
 		assertEquals(bind.getContent(), newBind.getContent());
 		assertEquals(bind.getPath(), newBind.getPath());
@@ -147,7 +146,7 @@ public class PlainBindUnitTest implements IBindUnitTest {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
 
-		XmlBind<Locale> newBind = bind.toXml();
+		AbstractBind<Locale> newBind = bind.toXml();
 
 		assertEquals(bind.getContent(), newBind.getContent());
 		assertEquals(bind.getPath(), newBind.getPath());
@@ -201,7 +200,7 @@ public class PlainBindUnitTest implements IBindUnitTest {
 	public void notEqualsRequestMethod() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new PlainBind<Locale>("test1", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = new PlainBind<Locale>("test2", RequestMethod.POST, locale);
+		AbstractBind<Locale> b2 = new PlainBind<Locale>("test1", RequestMethod.POST, locale);
 
 		assertNotEquals(b1, b2);
 	}

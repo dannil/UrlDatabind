@@ -153,6 +153,15 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
+	public void hashCodeEquals() {
+		Locale locale = new Locale("en", "US");
+		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+
+		assertEquals(b1.hashCode(), b2.hashCode());
+	}
+
+	@Test
 	public void equals() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
@@ -197,9 +206,10 @@ public class JsonBindUnitTest implements IBindUnitTest {
 
 	@Test
 	public void notEqualsRequestMethod() {
+		System.out.println("not equals request");
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test1", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = new JsonBind<Locale>("test2", RequestMethod.POST, locale);
+		AbstractBind<Locale> b2 = new JsonBind<Locale>("test1", RequestMethod.POST, locale);
 
 		assertNotEquals(b1, b2);
 	}
