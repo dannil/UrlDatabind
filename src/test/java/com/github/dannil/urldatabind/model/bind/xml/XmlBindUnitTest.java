@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.json.JsonBind;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 
 @RunWith(JUnit4.class)
@@ -21,121 +21,134 @@ public class XmlBindUnitTest implements IBindUnitTest {
 	@Override
 	public void createWithConstructor() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertNotNull(xmlBind);
+		assertNotNull(bind);
 	}
 
 	@Test
 	@Override
 	public void getPath() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("test", xmlBind.getPath());
+		assertEquals("test", bind.getPath());
 	}
 
 	@Test
 	@Override
 	public void setPath() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		xmlBind.setPath("setTest");
+		bind.setPath("setTest");
 
-		assertEquals("setTest", xmlBind.getPath());
+		assertEquals("setTest", bind.getPath());
 	}
 
 	@Test
 	@Override
 	public void getRequestMethod() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(RequestMethod.GET, xmlBind.getRequestMethod());
+		assertEquals(RequestMethod.GET, bind.getRequestMethod());
 	}
 
 	@Test
 	@Override
 	public void setRequestMethod() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		xmlBind.setRequestMethod(RequestMethod.POST);
+		bind.setRequestMethod(RequestMethod.POST);
 
-		assertEquals(RequestMethod.POST, xmlBind.getRequestMethod());
+		assertEquals(RequestMethod.POST, bind.getRequestMethod());
 	}
 
 	@Test
 	@Override
 	public void getContent() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(locale.getCountry(), xmlBind.getContent().getCountry());
+		assertEquals(locale.getCountry(), bind.getContent().getCountry());
 	}
 
 	@Test
 	@Override
 	public void setContent() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
 		Locale newLocale = new Locale("sv", "SE");
-		xmlBind.setContent(newLocale);
+		bind.setContent(newLocale);
 
-		assertEquals("SE", xmlBind.getContent().getCountry());
+		assertEquals("SE", bind.getContent().getCountry());
 	}
 
 	@Test
 	@Override
 	public void getHttpContent() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<locale>en_US</locale>", xmlBind.getHttpContent());
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<locale>en_US</locale>", bind.getHttpContent());
 	}
 
 	@Test
 	@Override
 	public void getType() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(Type.XML, xmlBind.getType());
+		assertEquals(Type.XML, bind.getType());
 	}
 
 	@Test
 	@Override
 	public void getHttpType() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("application/xml", xmlBind.getHttpType());
+		assertEquals("application/xml", bind.getHttpType());
 	}
 
 	@Test
 	@Override
 	public void toJson() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		JsonBind<Locale> jsonBind = xmlBind.toJson();
+		AbstractBind<Locale> newBind = bind.toJson();
 
-		assertEquals(xmlBind.getContent(), jsonBind.getContent());
-		assertEquals(xmlBind.getPath(), jsonBind.getPath());
-		assertEquals(Type.JSON, jsonBind.getType());
+		assertEquals(bind.getContent(), newBind.getContent());
+		assertEquals(bind.getPath(), newBind.getPath());
+		assertEquals(Type.JSON, newBind.getType());
+	}
+
+	@Test
+	@Override
+	public void toPlain() {
+		Locale locale = new Locale("en", "US");
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+
+		AbstractBind<Locale> newBind = bind.toPlain();
+
+		assertEquals(bind.getContent(), newBind.getContent());
+		assertEquals(bind.getPath(), newBind.getPath());
+		assertEquals(Type.PLAIN, newBind.getType());
 	}
 
 	@Test
 	@Override
 	public void toXml() {
 		Locale locale = new Locale("en", "US");
-		XmlBind<Locale> xmlBind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		XmlBind<Locale> newXmlBind = xmlBind.toXml();
+		AbstractBind<Locale> newBind = bind.toXml();
 
-		assertEquals(xmlBind, newXmlBind);
+		assertEquals(bind, newBind);
 	}
 
 }

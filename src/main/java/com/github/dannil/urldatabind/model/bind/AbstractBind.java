@@ -6,6 +6,7 @@ import com.github.dannil.urldatabind.builder.FormatBuilder;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
+import com.github.dannil.urldatabind.model.bind.plain.PlainBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 
 public abstract class AbstractBind<E> {
@@ -55,6 +56,11 @@ public abstract class AbstractBind<E> {
 
 	public JsonBind<E> toJson() {
 		JsonBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
+		return bind;
+	}
+
+	public PlainBind<E> toPlain() {
+		PlainBind<E> bind = new PlainBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
 

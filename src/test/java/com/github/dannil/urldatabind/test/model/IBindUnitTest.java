@@ -24,6 +24,8 @@ public interface IBindUnitTest {
 
 	void toJson();
 
+	void toPlain();
+
 	void toXml();
 
 }
