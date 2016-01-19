@@ -15,9 +15,10 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
+import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 
 @RunWith(JUnit4.class)
-public class PlainBindUnitTest implements IBindUnitTest {
+public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
 	@Test
 	@Override
@@ -154,6 +155,7 @@ public class PlainBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void equals() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
@@ -163,6 +165,7 @@ public class PlainBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void equalsItself() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
@@ -171,7 +174,8 @@ public class PlainBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
-	public void equalsNull() {
+	@Override
+	public void notEqualsNull() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
 		AbstractBind<Locale> b2 = null;
@@ -180,7 +184,8 @@ public class PlainBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
-	public void notEqualsIncompatible() {
+	@Override
+	public void notEqualsIncompatibleObject() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
 

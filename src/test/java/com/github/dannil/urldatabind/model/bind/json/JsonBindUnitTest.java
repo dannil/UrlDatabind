@@ -14,9 +14,10 @@ import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
+import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 
 @RunWith(JUnit4.class)
-public class JsonBindUnitTest implements IBindUnitTest {
+public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
 	@Test
 	@Override
@@ -162,6 +163,7 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void equals() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
@@ -171,6 +173,7 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
+	@Override
 	public void equalsItself() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
@@ -179,7 +182,8 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
-	public void equalsNull() {
+	@Override
+	public void notEqualsNull() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 		AbstractBind<Locale> b2 = null;
@@ -188,7 +192,7 @@ public class JsonBindUnitTest implements IBindUnitTest {
 	}
 
 	@Test
-	public void notEqualsIncompatible() {
+	public void notEqualsIncompatibleObject() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
