@@ -20,6 +20,16 @@ public abstract class AbstractBind<E> {
 	public abstract String getHttpType();
 
 	protected AbstractBind(String path, RequestMethod requestMethod, E content) {
+		if (path == null) {
+			throw new IllegalArgumentException("Path can't be null");
+		}
+		if (requestMethod == null) {
+			throw new IllegalArgumentException("RequestMethod can't be null");
+		}
+		if (content == null) {
+			throw new IllegalArgumentException("Content can't be null");
+		}
+
 		this.path = path;
 		this.requestMethod = requestMethod;
 		this.content = content;
