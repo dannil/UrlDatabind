@@ -54,18 +54,18 @@ public abstract class AbstractBind<E> {
 		return formatBuilder.getHttpFormat(this.getType(), this);
 	}
 
-	public AbstractBind<E> toJson() {
-		AbstractBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
+	public JsonBind<E> toJson() {
+		JsonBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
 
-	public AbstractBind<E> toPlain() {
-		AbstractBind<E> bind = new PlainBind<E>(this.path, this.requestMethod, this.content);
+	public PlainBind<E> toPlain() {
+		PlainBind<E> bind = new PlainBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
 
-	public AbstractBind<E> toXml() {
-		AbstractBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
+	public XmlBind<E> toXml() {
+		XmlBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
 
