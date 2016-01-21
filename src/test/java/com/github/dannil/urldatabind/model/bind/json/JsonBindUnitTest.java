@@ -28,6 +28,24 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 		assertNotNull(bind);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void nullPathArgument() {
+		Locale locale = new Locale("en", "US");
+		AbstractBind<Locale> bind = new JsonBind<Locale>(null, RequestMethod.GET, locale);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void nullRequestMethodArgument() {
+		Locale locale = new Locale("en", "US");
+		AbstractBind<Locale> bind = new JsonBind<Locale>("test", null, locale);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void nullContentArgument() {
+		// Locale locale = new Locale("en", "US");
+		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, null);
+	}
+
 	@Test
 	@Override
 	public void getPath() {
