@@ -8,19 +8,15 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public class FormatBuilder {
 
-	private static FormatBuilder instance;
-
-	private static Object lock = new Object();
-
 	private Map<Type, IBuilder> builders;
 
+	// Initialization-on-demand holder idiom
+	private static class SingletonHolder {
+		static final FormatBuilder INSTANCE = new FormatBuilder();
+	}
+
 	public static FormatBuilder getInstance() {
-		synchronized (lock) {
-			if (instance == null) {
-				instance = new FormatBuilder();
-			}
-			return instance;
-		}
+		return SingletonHolder.INSTANCE;
 	}
 
 	private FormatBuilder() {
