@@ -8,28 +8,22 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public class FormatBuilder {
 
-	private static FormatBuilder formatBuilderInstance;
-
-	// private JsonBuilder jsonBuilder;
-	// private XmlBuilder xmlBuilder;
-
-	private Map<Type, IBuilder> builders;
+	private static FormatBuilder instance;
 
 	private static Object lock = new Object();
 
+	private Map<Type, IBuilder> builders;
+
 	public static FormatBuilder getInstance() {
 		synchronized (lock) {
-			if (formatBuilderInstance == null) {
-				formatBuilderInstance = new FormatBuilder();
+			if (instance == null) {
+				instance = new FormatBuilder();
 			}
-			return formatBuilderInstance;
+			return instance;
 		}
 	}
 
 	private FormatBuilder() {
-		// this.jsonBuilder = new JsonBuilder();
-		// this.xmlBuilder = new XmlBuilder();
-
 		this.builders = new EnumMap<Type, IBuilder>(Type.class);
 		this.builders.put(Type.JSON, new JsonBuilder());
 		this.builders.put(Type.PLAIN, new PlainBuilder());
@@ -41,20 +35,6 @@ public class FormatBuilder {
 			throw new IllegalArgumentException(String.format("No builder for type %s exists", type));
 		}
 		return this.builders.get(type).generate(bind);
-		// switch (type) {
-		// case JSON:
-		// //return this.jsonBuilder.generate(bind);
-		//
-		//
-		// case XML:
-		// //return this.xmlBuilder.generate(bind);
-		//
-		// case PLAIN:
-		// return bind.getContent();
-		//
-		// default:
-		// throw new IllegalArgumentException("No format of type " + type +
-		// " exists");
 	}
 
 }
