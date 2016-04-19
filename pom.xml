@@ -39,19 +39,16 @@
 	
 	<build>
 		<plugins>
-		
 			<plugin>
 			    <groupId>org.eluder.coveralls</groupId>
 			    <artifactId>coveralls-maven-plugin</artifactId>
 			    <version>4.1.0</version>
-			    
 			    <configuration>
 		            <sourceEncoding>UTF-8</sourceEncoding>
 		            <serviceName>travis-ci</serviceName>
 		            <serviceJobId>${env.TRAVIS_JOB_ID}</serviceJobId>
 			    </configuration>
 			</plugin>
-		
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -71,7 +68,6 @@
 					</execution>
 				</executions>
 			</plugin>
-		
 			<plugin>
 		      	<artifactId>maven-compiler-plugin</artifactId>
 		      	<version>3.5.1</version>
@@ -80,9 +76,6 @@
 	        		<target>1.7</target>
 		      	</configuration>
 			</plugin>
-			
 		</plugins>
 	</build>
-
-	
 </project>
