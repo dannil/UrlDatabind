@@ -228,7 +228,6 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
 	@Test
 	public void notEqualsRequestMethod() {
-		System.out.println("not equals request");
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test1", RequestMethod.GET, locale);
 		AbstractBind<Locale> b2 = new JsonBind<Locale>("test1", RequestMethod.POST, locale);
