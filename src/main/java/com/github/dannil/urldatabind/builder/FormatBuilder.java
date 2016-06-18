@@ -12,11 +12,9 @@ public class FormatBuilder {
 
 	// Initialization-on-demand holder idiom
 	private static class SingletonHolder {
-		@SuppressWarnings("synthetic-access")
 		private static final FormatBuilder INSTANCE = new FormatBuilder();
 	}
 
-	@SuppressWarnings("synthetic-access")
 	public static FormatBuilder getInstance() {
 		return SingletonHolder.INSTANCE;
 	}
