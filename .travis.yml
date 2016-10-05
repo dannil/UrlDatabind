@@ -8,20 +8,10 @@ branches:
   - master
   - dev
   - coverity_scan
-  
 sudo: required
-
 after_success:
-  - mvn jacoco:report
-  - curl http://www.jpm4j.org/install/script > jpmInstall.sh
-  - sudo sh jpmInstall.sh
-  - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
-  - codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml --projectToken $CODACY_PROJECT_TOKEN
-  
+- mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN -DcodacyApiBaseUrl=https://api.codacy.com
 env:
   global:
-    secure: "Am632BzY69bBX0M0m2o7RzfAJCiEeOVMAf+xA/fxj3cyN3CnJEvWHU8z/c1hpqyYIVgKLP20g6NKzQJspCYesADSngziQZyQ79+PT64mZzR+FGZUh4q1PpAsSyJtl7+NHH+aLyn6cj+2rB9HnqMhC
-			 Qy0GS6+3rIjz0dF+TcApTlCnrv/rDMt4inguoGcSix0ZimgKjnLP4TEnUi+xlYKXEjNjHab69PqfGdIN1k9g1mdtrH8r96F24mwxsQfAe+owz7iGfOV2JCB2QhgVYfWgzIFv9hbdWavpZbGUZ31R4orY/xHIF9hI
-			 UemKUCic5ZQVpK69EpcR5apK1han6bGGega86qAw+k/PfStJrWHmIINsBlTYX92ddFCxuiKtkFkMEm+37Y/6D80SNxn/87dkUWupNEQ3S8s6xzW7O6LROqxbjvTNeE7zG742fONU1qGDVQLbkSY3IIYjLVylQtT5
-			 i8RdrdXRpw9hvB5nEtDs8oCcEdj/jMCpbfMJyJnnKfSq2c3w0XnDyKie3fTleRlalbRq7ail+xXvlkwvxW8rPrgQzy5dBzzQHQ+BlzhXjNsp63OKbIeqTOe+hWYE5dtas8WPdvtz88I0Av6vQnx17vlFIEcbfNQJ
-			 uPviqvilImacIYDcfgBNGyz3fklToxLlBBqp3jKil4F0y82gs4Dyw0="
+  - secure: "6EVSVEyCLKSfZACiIDwTv3gW+jiClNndvWz0iLO3HGlSBWh+2qCSvbFXw9dJG7ePu0FynP5pZ8PqRC5igNfNght2ePZsz9+S3PWBMXfKEQvupbzoZFSB57PBPCuGW7VmA2ZVp4x34zN4cQtPvVBrUDB+2lRF6gmFbTeKcuBiuwtcH5CyaxvpWWkxB4eR53N1+Tee+vPTiPDDOo9erddb0E5UVHZEns31AT7qjwczc5JlCHeNs8YMkrJct7yngq7OW3qRq5Yws01SB6+lvMeXWcFF45xuglMK7Mwl6egr4P2djVE+xJRpJStSBVPrYxE0FCI3hcvPAfp2s5PU7b33uxeVf9I5XBrgI1BP46kerpQLCji+37TzPZsyFeJ3L4xuxfHFesPk7StIa4sS7y1fo2v+wzJi8769ToI0v82GoTkzW1RxaxtZYPTmNn6AooNWO9SDelH0ZZGOUEP2dMu1w8O6WVF6pwKarPZbp+UGM7+kNaLm+ev9GU0Ev9K4b5Rizo88WSrvjMlXWPE9MOJaYO1F/dWCQldHuQVrR5t2nLtTWJ5RX6LYkh/p3Bojq6WKvh+jmH6xitZuW717bF8++zkS29YKhePXsss5U5wnKlJBMvaW2fG4cXrlGJ92gJAuMlnColNOBGY9hI0CTaU6GYAGn7WIb+s6/P2tDFhkI9E="
+  - secure: "cslWCGj63cipEoMvJFamd4D0+h4h+6Xfw4x1j6fpDVPqLCYBbQnNCz3paqQe9ZSeD1xR+mf70W97JaqH8UZD3t2GKMu7SXWxym9eR3jkeRrzWJsaC5inp7cdQlwjuq+UUSzw2AHZCECEMb6SUdeEZT7A2yDLYsIfNdyq8bcmkz8doek5zgoBOfVBVqYVuZMV/lsZ4yO/Y0a4nU8SCSxslRx8sEYae90TcdwOypnlJqZFhO7TuIKKm5h7IeJZNeOVm1+d+gZFCTI11f/vNgYugYFJPJzjW6N6EIjX4Eoc1s8E+cQ4P7m9w0QmLSEXKx4bWouxRgbEi1EHK6a8PY44nlWaKR2gK99RT9tj3mlegjG5X1+AQAgRr6hKnEUsSzvR+UPSiCjWWGDItIMw2fMK72WKGL5SQkS2luwOmMaypTb+cK7QpNQ7wx/4M1sGzwT8NCuDPSzqPna/Rc3fqj3bhgj0QSnXdgT1A6zO9VOfcVSyJfHbakkeEyeKRzcl2+Sc9cSljp4qDzYqCe8gkcJoaFmWb01a7tFd5gDiLZWBL4dVhyQd8QEiNoIRiML/r95j/0dVxvB1dR+pa5b5m6q3LrKwNXUmDQdGyGObT7hOoZAdcAkqX7ezfUr2drYo/3lqYWRCJv6G4OXl3nwZoFeuqgb1+hJPPB2Q2NtDs6JufPo="
