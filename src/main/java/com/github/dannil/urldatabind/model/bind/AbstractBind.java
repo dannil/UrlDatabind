@@ -14,7 +14,7 @@ import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
  * 
  * @author Daniel Nilsson
  *
- * @param <E> the datatype of the content
+ * @param <E> the type of the content to be held in this bind
  */
 public abstract class AbstractBind<E> {
 
@@ -36,6 +36,13 @@ public abstract class AbstractBind<E> {
 	 */
 	public abstract String getHttpType();
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param path the path
+	 * @param requestMethod the HTTP request method
+	 * @param content the content
+	 */
 	protected AbstractBind(String path, RequestMethod requestMethod, E content) {
 		if (path == null) {
 			throw new IllegalArgumentException("Path can't be null");
