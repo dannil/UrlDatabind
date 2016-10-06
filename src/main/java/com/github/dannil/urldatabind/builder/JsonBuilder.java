@@ -14,6 +14,9 @@ public class JsonBuilder implements IBuilder {
 
 	private Gson gson;
 
+	/**
+	 * Default constructor.
+	 */
 	public JsonBuilder() {
 		this.gson = new GsonBuilder().setPrettyPrinting().create();
 	}

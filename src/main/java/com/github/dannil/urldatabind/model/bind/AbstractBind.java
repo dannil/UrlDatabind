@@ -23,20 +23,6 @@ public abstract class AbstractBind<E> {
 	protected E content;
 
 	/**
-	 * Returns the type of the bind.
-	 * 
-	 * @return the type
-	 */
-	public abstract Type getType();
-
-	/**
-	 * Returns the HTTP type of the bind.
-	 * 
-	 * @return the HTTP type
-	 */
-	public abstract String getHttpType();
-
-	/**
 	 * Overloaded constructor.
 	 * 
 	 * @param path the path
@@ -117,6 +103,20 @@ public abstract class AbstractBind<E> {
 		XmlBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
+	
+	/**
+	 * Returns the type of the bind.
+	 * 
+	 * @return the type
+	 */
+	public abstract Type getType();
+
+	/**
+	 * Returns the HTTP type of the bind.
+	 * 
+	 * @return the HTTP type
+	 */
+	public abstract String getHttpType();
 
 	@Override
 	public int hashCode() {

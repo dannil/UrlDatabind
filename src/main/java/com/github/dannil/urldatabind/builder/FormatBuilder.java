@@ -11,14 +11,9 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  * 
  * @author Daniel Nilsson
  */
-public class FormatBuilder {
+public final class FormatBuilder {
 
 	private Map<Type, IBuilder> builders;
-
-	// Initialization-on-demand holder idiom
-	private static class SingletonHolder {
-		private static final FormatBuilder INSTANCE = new FormatBuilder();
-	}
 
 	/**
 	 * Returns the singleton instance.
@@ -51,6 +46,11 @@ public class FormatBuilder {
 			throw new IllegalArgumentException(String.format("No builder for type %s exists", type));
 		}
 		return this.builders.get(type).generate(bind);
+	}
+	
+	// Initialization-on-demand holder idiom
+	private static class SingletonHolder {
+		private static final FormatBuilder INSTANCE = new FormatBuilder();
 	}
 
 }
