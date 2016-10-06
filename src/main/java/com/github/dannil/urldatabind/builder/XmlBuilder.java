@@ -6,6 +6,11 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.thoughtworks.xstream.XStream;
 
+/**
+ * Builder for XML output.
+ * 
+ * @author Daniel Nilsson
+ */
 public class XmlBuilder implements IBuilder {
 
 	// private Serializer serializer;
@@ -15,6 +20,9 @@ public class XmlBuilder implements IBuilder {
 
 	private XStream xstream;
 
+	/**
+	 * Default constructor.
+	 */
 	public XmlBuilder() {
 		// this.serializer = new Persister();
 		this.xmlHeader = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";

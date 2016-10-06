@@ -9,14 +9,31 @@ import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.plain.PlainBind;
 import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
 
+/**
+ * Abstract bind which implements common functions for binds.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param <E> the datatype of the content
+ */
 public abstract class AbstractBind<E> {
 
 	protected String path;
 	protected RequestMethod requestMethod;
 	protected E content;
 
+	/**
+	 * Returns the type of the bind.
+	 * 
+	 * @return the type
+	 */
 	public abstract Type getType();
 
+	/**
+	 * Returns the HTTP type of the bind.
+	 * 
+	 * @return the HTTP type
+	 */
 	public abstract String getHttpType();
 
 	protected AbstractBind(String path, RequestMethod requestMethod, E content) {
@@ -59,11 +76,21 @@ public abstract class AbstractBind<E> {
 		this.content = content;
 	}
 
+	/**
+	 * Returns the HTTP format of the content.
+	 * 
+	 * @return the HTTP format of the content
+	 */
 	public Object getHttpContent() {
 		FormatBuilder formatBuilder = FormatBuilder.getInstance();
 		return formatBuilder.getHttpFormat(this.getType(), this);
 	}
 
+	/**
+	 * Converts the bind to JSON format.
+	 * 
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.JsonBind JsonBind}
+	 */
 	public JsonBind<E> toJson() {
 		JsonBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
@@ -74,6 +101,11 @@ public abstract class AbstractBind<E> {
 		return bind;
 	}
 
+	/**
+	 * Converts the bind to XML format.
+	 * 
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.XmlBind XmlBind}
+	 */
 	public XmlBind<E> toXml() {
 		XmlBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
 		return bind;

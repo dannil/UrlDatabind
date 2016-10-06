@@ -6,6 +6,13 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 public class JsonBind<E> extends AbstractBind<E> {
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param path the path
+	 * @param requestMethod the HTTP request method
+	 * @param content the content
+	 */
 	public JsonBind(String path, RequestMethod requestMethod, E content) {
 		super(path, requestMethod, content);
 		// TODO Auto-generated constructor stub

@@ -5,6 +5,11 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * Builder for JSON output.
+ * 
+ * @author Daniel Nilsson
+ */
 public class JsonBuilder implements IBuilder {
 
 	private Gson gson;
