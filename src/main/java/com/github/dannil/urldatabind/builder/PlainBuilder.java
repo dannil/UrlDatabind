@@ -3,7 +3,20 @@ package com.github.dannil.urldatabind.builder;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
+/**
+ * Builder for plain output (the {@link java.lang.Object#toString() toString()} representation of a
+ * binds content).
+ * 
+ * @author Daniel Nilsson
+ */
 public class PlainBuilder implements IBuilder {
+
+	/**
+	 * Default constructor.
+	 */
+	public PlainBuilder() {
+
+	}
 
 	@Override
 	public Object generate(AbstractBind<?> bind) {

@@ -14,7 +14,8 @@ import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
  * 
  * @author Daniel Nilsson
  *
- * @param <E> the type of the content to be held in this bind
+ * @param <E>
+ *            the type of the content to be held in this bind
  */
 public abstract class AbstractBind<E> {
 
@@ -25,9 +26,12 @@ public abstract class AbstractBind<E> {
 	/**
 	 * Overloaded constructor.
 	 * 
-	 * @param path the path
-	 * @param requestMethod the HTTP request method
-	 * @param content the content
+	 * @param path
+	 *            the path
+	 * @param requestMethod
+	 *            the HTTP request method
+	 * @param content
+	 *            the content
 	 */
 	protected AbstractBind(String path, RequestMethod requestMethod, E content) {
 		if (path == null) {
@@ -45,26 +49,59 @@ public abstract class AbstractBind<E> {
 		this.content = content;
 	}
 
+	/**
+	 * Getter for path.
+	 * 
+	 * @return the path
+	 */
 	public String getPath() {
 		return this.path;
 	}
 
+	/**
+	 * Setter for path.
+	 * 
+	 * @param path
+	 *            the path
+	 */
 	public void setPath(String path) {
 		this.path = path;
 	}
 
+	/**
+	 * Getter for request method.
+	 * 
+	 * @return the request method
+	 */
 	public RequestMethod getRequestMethod() {
 		return this.requestMethod;
 	}
 
+	/**
+	 * Setter for request method.
+	 * 
+	 * @param requestMethod
+	 *            the request method
+	 */
 	public void setRequestMethod(RequestMethod requestMethod) {
 		this.requestMethod = requestMethod;
 	}
 
+	/**
+	 * Getter for content.
+	 * 
+	 * @return the content
+	 */
 	public E getContent() {
 		return this.content;
 	}
 
+	/**
+	 * Setter for content.
+	 * 
+	 * @param content
+	 *            the content
+	 */
 	public void setContent(E content) {
 		this.content = content;
 	}
@@ -82,7 +119,7 @@ public abstract class AbstractBind<E> {
 	/**
 	 * Converts the bind to JSON format.
 	 * 
-	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.JsonBind JsonBind}
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.json.JsonBind JsonBind}
 	 */
 	public JsonBind<E> toJson() {
 		JsonBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
@@ -97,13 +134,13 @@ public abstract class AbstractBind<E> {
 	/**
 	 * Converts the bind to XML format.
 	 * 
-	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.XmlBind XmlBind}
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.xml.XmlBind XmlBind}
 	 */
 	public XmlBind<E> toXml() {
 		XmlBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
 	}
-	
+
 	/**
 	 * Returns the type of the bind.
 	 * 

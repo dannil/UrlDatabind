@@ -16,15 +16,6 @@ public final class FormatBuilder {
 	private Map<Type, IBuilder> builders;
 
 	/**
-	 * Returns the singleton instance.
-	 * 
-	 * @return the instance
-	 */
-	public static FormatBuilder getInstance() {
-		return SingletonHolder.INSTANCE;
-	}
-
-	/**
 	 * Default constructor. Initializes the various builders that can be used.
 	 */
 	private FormatBuilder() {
@@ -35,10 +26,21 @@ public final class FormatBuilder {
 	}
 
 	/**
+	 * Returns the singleton instance.
+	 * 
+	 * @return the instance
+	 */
+	public static FormatBuilder getInstance() {
+		return SingletonHolder.INSTANCE;
+	}
+
+	/**
 	 * Returns the HTTP format of the bind based on the type.
 	 * 
-	 * @param type the type
-	 * @param bind the bind
+	 * @param type
+	 *            the type
+	 * @param bind
+	 *            the bind
 	 * @return the HTTP format of the bind based on the type
 	 */
 	public Object getHttpFormat(Type type, AbstractBind<?> bind) {
@@ -47,8 +49,11 @@ public final class FormatBuilder {
 		}
 		return this.builders.get(type).generate(bind);
 	}
-	
-	// Initialization-on-demand holder idiom
+
+	/**
+	 * Private class which contains the FormatBuilder singleton. Implements the
+	 * initialization-on-demand holder idiom for efficiency purposes.
+	 */
 	private static class SingletonHolder {
 		private static final FormatBuilder INSTANCE = new FormatBuilder();
 	}

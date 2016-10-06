@@ -1,7 +1,7 @@
 package com.github.dannil.urldatabind.model;
 
 /**
- * Enumerable of HTTP types
+ * Enumerable of HTTP types.
  * 
  * @author Daniel Nilsson
  */

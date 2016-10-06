@@ -14,13 +14,15 @@ public class XmlBind<E> extends AbstractBind<E> {
 	/**
 	 * Overloaded constructor.
 	 * 
-	 * @param path the path
-	 * @param requestMethod the HTTP request method
-	 * @param content the content
+	 * @param path
+	 *            the path
+	 * @param requestMethod
+	 *            the HTTP request method
+	 * @param content
+	 *            the content
 	 */
 	public XmlBind(String path, RequestMethod requestMethod, E content) {
 		super(path, requestMethod, content);
-		// TODO Auto-generated constructor stub
 	}
 
 	// @Override
