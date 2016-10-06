@@ -8,6 +8,9 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  * Model for a XML bind.
  * 
  * @author Daniel Nilsson
+ * 
+ * @param <E>
+ *            the type of the content to be held in this bind
  */
 public class XmlBind<E> extends AbstractBind<E> {
 

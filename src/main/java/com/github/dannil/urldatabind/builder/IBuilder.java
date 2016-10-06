@@ -2,6 +2,11 @@ package com.github.dannil.urldatabind.builder;
 
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
+/**
+ * Interface for builders.
+ * 
+ * @author Daniel Nilsson
+ */
 public interface IBuilder {
 
 	/**
