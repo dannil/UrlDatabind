@@ -126,6 +126,12 @@ public abstract class AbstractBind<E> {
 		return bind;
 	}
 
+	/**
+	 * Convert the bind to a plain format.
+	 * 
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.plain.PlainBind
+	 *         PlainBind}
+	 */
 	public PlainBind<E> toPlain() {
 		PlainBind<E> bind = new PlainBind<E>(this.path, this.requestMethod, this.content);
 		return bind;
