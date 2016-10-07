@@ -11,13 +11,6 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  */
 public class PlainBuilder implements IBuilder {
 
-	/**
-	 * Default constructor.
-	 */
-	public PlainBuilder() {
-
-	}
-
 	@Override
 	public Object generate(AbstractBind<?> bind) {
 		return bind.getContent().toString();
