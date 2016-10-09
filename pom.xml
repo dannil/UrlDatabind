@@ -7,6 +7,11 @@
 
 	<name>UrlDatabind</name>
 	<description>Bind data to URL endpoints</description>
+	<url>https://github.com/dannil/UrlDatabind</url>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
 	<scm>
 		<url>https://github.com/dannil/UrlDatabind.git</url>
