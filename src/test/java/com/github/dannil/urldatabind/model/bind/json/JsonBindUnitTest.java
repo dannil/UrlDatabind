@@ -217,6 +217,7 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 	}
 
 	@Test
+	@Override
 	public void notEqualsIncompatibleObject() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
