@@ -3,6 +3,7 @@ package com.github.dannil.urldatabind.model.bind.json;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.Locale;
 
@@ -32,18 +33,24 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 	public void nullPathArgument() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new JsonBind<Locale>(null, RequestMethod.GET, locale);
+		
+		assertNull(bind);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nullRequestMethodArgument() {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new JsonBind<Locale>("test", null, locale);
+		
+		assertNull(bind);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nullContentArgument() {
 		// Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, null);
+		
+		assertNull(bind);
 	}
 
 	@Test
