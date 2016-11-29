@@ -6,6 +6,9 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  * Interface for builders.
  * 
  * @author Daniel Nilsson
+ *
+ * @param <T>
+ *            the return type of the content for the implementing builder
  */
 public interface IBuilder<T> {
 
