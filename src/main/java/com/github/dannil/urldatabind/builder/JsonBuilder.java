@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder;
  * 
  * @author Daniel Nilsson
  */
-public class JsonBuilder implements IBuilder {
+public class JsonBuilder implements IBuilder<String> {
 
 	private Gson gson;
 
@@ -22,7 +22,7 @@ public class JsonBuilder implements IBuilder {
 	}
 
 	@Override
-	public Object generate(AbstractBind<?> bind) {
+	public String generate(AbstractBind<?> bind) {
 		return this.gson.toJson(bind.getContent());
 	}
 

@@ -13,13 +13,13 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  */
 public final class FormatBuilder {
 
-	private Map<Type, IBuilder> builders;
+	private Map<Type, IBuilder<?>> builders;
 
 	/**
 	 * Default constructor. Initializes the various builders that can be used.
 	 */
 	private FormatBuilder() {
-		this.builders = new EnumMap<Type, IBuilder>(Type.class);
+		this.builders = new EnumMap<Type, IBuilder<?>>(Type.class);
 		this.builders.put(Type.JSON, new JsonBuilder());
 		this.builders.put(Type.PLAIN, new PlainBuilder());
 		this.builders.put(Type.XML, new XmlBuilder());

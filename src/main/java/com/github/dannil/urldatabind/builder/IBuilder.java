@@ -7,7 +7,7 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  * 
  * @author Daniel Nilsson
  */
-public interface IBuilder {
+public interface IBuilder<T> {
 
 	/**
 	 * Generate an output of the bind based on the implementing builder.
@@ -16,6 +16,6 @@ public interface IBuilder {
 	 *            the bind
 	 * @return a representation of the bind based on the implementing builder
 	 */
-	Object generate(AbstractBind<?> bind);
+	T generate(AbstractBind<?> bind);
 
 }

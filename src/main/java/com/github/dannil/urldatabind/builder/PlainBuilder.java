@@ -4,15 +4,15 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 /**
- * Builder for plain output (the {@link java.lang.Object#toString() toString()} representation of a
- * binds content).
+ * Builder for plain output (the {@link java.lang.Object#toString() toString()}
+ * representation of a binds content).
  * 
  * @author Daniel Nilsson
  */
-public class PlainBuilder implements IBuilder {
+public class PlainBuilder implements IBuilder<String> {
 
 	@Override
-	public Object generate(AbstractBind<?> bind) {
+	public String generate(AbstractBind<?> bind) {
 		return bind.getContent().toString();
 	}
 

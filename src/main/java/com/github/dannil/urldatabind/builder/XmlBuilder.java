@@ -11,7 +11,7 @@ import com.thoughtworks.xstream.XStream;
  * 
  * @author Daniel Nilsson
  */
-public class XmlBuilder implements IBuilder {
+public class XmlBuilder implements IBuilder<String> {
 
 	// private Serializer serializer;
 	// private OutputStream baos;
@@ -31,7 +31,7 @@ public class XmlBuilder implements IBuilder {
 	}
 
 	@Override
-	public Object generate(AbstractBind<?> bind) {
+	public String generate(AbstractBind<?> bind) {
 		Class<?> clazz = bind.getContent().getClass();
 		this.xstream.alias(clazz.getSimpleName().toLowerCase(), clazz);
 		return this.xmlHeader + "\n" + this.xstream.toXML(bind.getContent());
