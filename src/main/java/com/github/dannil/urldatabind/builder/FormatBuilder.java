@@ -61,7 +61,7 @@ public final class FormatBuilder {
 		/**
 		 * Private constructor.
 		 */
-		public SingletonHolder() {
+		private SingletonHolder() {
 			// To avoid initialization outside this class
 		}
 
