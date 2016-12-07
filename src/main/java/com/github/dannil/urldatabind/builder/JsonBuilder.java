@@ -41,11 +41,6 @@ public class JsonBuilder implements IBuilder<String> {
 		}
 
 		return obj instanceof JsonBuilder;
-		// if (!(obj instanceof JsonBuilder)) {
-		// return false;
-		// }
-		//
-		// return true;
 	}
 
 }

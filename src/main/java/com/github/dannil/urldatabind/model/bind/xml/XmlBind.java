@@ -28,11 +28,6 @@ public class XmlBind<E> extends AbstractBind<E> {
 		super(path, requestMethod, content);
 	}
 
-	// @Override
-	// public XmlBind<E> toXml() {
-	// throw new IllegalArgumentException("Bind is already of type XML");
-	// }
-
 	@Override
 	public Type getType() {
 		return Type.XML;

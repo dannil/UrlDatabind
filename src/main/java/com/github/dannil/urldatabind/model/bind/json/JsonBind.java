@@ -28,11 +28,6 @@ public class JsonBind<E> extends AbstractBind<E> {
 		super(path, requestMethod, content);
 	}
 
-	// @Override
-	// public JsonBind<E> toJson() {
-	// throw new IllegalArgumentException("Bind is already of type JSON");
-	// }
-
 	@Override
 	public Type getType() {
 		return Type.JSON;

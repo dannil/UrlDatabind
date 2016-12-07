@@ -31,11 +31,6 @@ public class PlainBuilder implements IBuilder<String> {
 		}
 
 		return obj instanceof PlainBuilder;
-		// if (!(obj instanceof PlainBuilder)) {
-		// return false;
-		// }
-		//
-		// return true;
 	}
 
 }

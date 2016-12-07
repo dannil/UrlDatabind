@@ -55,7 +55,16 @@ public final class FormatBuilder {
 	 * initialization-on-demand holder idiom for efficiency purposes.
 	 */
 	private static class SingletonHolder {
+
 		private static final FormatBuilder INSTANCE = new FormatBuilder();
+
+		/**
+		 * Private constructor.
+		 */
+		public SingletonHolder() {
+			// To avoid initialization outside this class
+		}
+
 	}
 
 }

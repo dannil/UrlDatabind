@@ -13,9 +13,6 @@ import com.thoughtworks.xstream.XStream;
  */
 public class XmlBuilder implements IBuilder<String> {
 
-	// private Serializer serializer;
-	// private OutputStream baos;
-
 	private String xmlHeader;
 
 	private XStream xstream;
@@ -24,7 +21,6 @@ public class XmlBuilder implements IBuilder<String> {
 	 * Default constructor.
 	 */
 	public XmlBuilder() {
-		// this.serializer = new Persister();
 		this.xmlHeader = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
 		this.xstream = new XStream();
@@ -35,18 +31,6 @@ public class XmlBuilder implements IBuilder<String> {
 		Class<?> clazz = bind.getContent().getClass();
 		this.xstream.alias(clazz.getSimpleName().toLowerCase(), clazz);
 		return this.xmlHeader + "\n" + this.xstream.toXML(bind.getContent());
-
-		// this.baos = new ByteArrayOutputStream();
-		// try {
-		// this.serializer.write(bind.getContent(), this.baos);
-		// String format = this.baos.toString();
-		// this.baos.close();
-		// return format;
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// return null;
 	}
 
 	@Override

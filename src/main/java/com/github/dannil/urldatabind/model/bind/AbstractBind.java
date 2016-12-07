@@ -119,32 +119,31 @@ public abstract class AbstractBind<E> {
 	/**
 	 * Converts the bind to JSON format.
 	 * 
-	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.json.JsonBind JsonBind}
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.json.JsonBind
+	 *         JsonBind}
 	 */
 	public JsonBind<E> toJson() {
-		JsonBind<E> bind = new JsonBind<E>(this.path, this.requestMethod, this.content);
-		return bind;
+		return new JsonBind<E>(this.path, this.requestMethod, this.content);
 	}
 
 	/**
 	 * Convert the bind to a plain format.
 	 * 
-	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.plain.PlainBind
-	 *         PlainBind}
+	 * @return the bind as a
+	 *         {@link com.github.dannil.urldatabind.model.bind.plain.PlainBind PlainBind}
 	 */
 	public PlainBind<E> toPlain() {
-		PlainBind<E> bind = new PlainBind<E>(this.path, this.requestMethod, this.content);
-		return bind;
+		return new PlainBind<E>(this.path, this.requestMethod, this.content);
 	}
 
 	/**
 	 * Converts the bind to XML format.
 	 * 
-	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.xml.XmlBind XmlBind}
+	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.xml.XmlBind
+	 *         XmlBind}
 	 */
 	public XmlBind<E> toXml() {
-		XmlBind<E> bind = new XmlBind<E>(this.path, this.requestMethod, this.content);
-		return bind;
+		return new XmlBind<E>(this.path, this.requestMethod, this.content);
 	}
 
 	/**
