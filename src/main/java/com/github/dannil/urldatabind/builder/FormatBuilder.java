@@ -43,7 +43,7 @@ public final class FormatBuilder {
      *            the bind
      * @return the HTTP format of the bind based on the type
      */
-    public Object getHttpFormat(Type type, AbstractBind<?> bind) {
+    public Object getHttpFormat(Type type, AbstractBind bind) {
         if (!this.builders.containsKey(type)) {
             throw new IllegalArgumentException(String.format("No builder for type %s exists", type));
         }
