@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 import com.github.dannil.urldatabind.model.RequestMethod;
+import com.github.dannil.urldatabind.model.Result;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.plain.PlainBind;
@@ -13,15 +14,12 @@ import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
  * Abstract bind which implements common functions for binds.
  *
  * @author Daniel Nilsson
- *
- * @param <E>
- *            the type of the content to be held in this bind
  */
-public abstract class AbstractBind<E> {
+public abstract class AbstractBind {
 
     protected String path;
     protected RequestMethod requestMethod;
-    protected E content;
+    protected Result result;
 
     /**
      * Overloaded constructor.
@@ -33,20 +31,20 @@ public abstract class AbstractBind<E> {
      * @param content
      *            the content
      */
-    protected AbstractBind(String path, RequestMethod requestMethod, E content) {
+    protected AbstractBind(String path, RequestMethod requestMethod, Result result) {
         if (path == null) {
             throw new IllegalArgumentException("Path can't be null");
         }
         if (requestMethod == null) {
             throw new IllegalArgumentException("RequestMethod can't be null");
         }
-        if (content == null) {
+        if (result == null) {
             throw new IllegalArgumentException("Content can't be null");
         }
 
         this.path = path;
         this.requestMethod = requestMethod;
-        this.content = content;
+        this.result = result;
     }
 
     /**
@@ -87,24 +85,24 @@ public abstract class AbstractBind<E> {
         this.requestMethod = requestMethod;
     }
 
-    /**
-     * Getter for content.
-     * 
-     * @return the content
-     */
-    public E getContent() {
-        return this.content;
-    }
-
-    /**
-     * Setter for content.
-     * 
-     * @param content
-     *            the content
-     */
-    public void setContent(E content) {
-        this.content = content;
-    }
+    // /**
+    // * Getter for content.
+    // *
+    // * @return the content
+    // */
+    // public E getContent() {
+    // return this.content;
+    // }
+    //
+    // /**
+    // * Setter for content.
+    // *
+    // * @param content
+    // * the content
+    // */
+    // public void setContent(E content) {
+    // this.content = content;
+    // }
 
     /**
      * Returns the HTTP format of the content.
@@ -122,8 +120,8 @@ public abstract class AbstractBind<E> {
      * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.json.JsonBind
      *         JsonBind}
      */
-    public JsonBind<E> toJson() {
-        return new JsonBind<>(this.path, this.requestMethod, this.content);
+    public JsonBind toJson() {
+        return new JsonBind<>(this.path, this.requestMethod, this.result);
     }
 
     /**
@@ -132,8 +130,8 @@ public abstract class AbstractBind<E> {
      * @return the bind as a
      *         {@link com.github.dannil.urldatabind.model.bind.plain.PlainBind PlainBind}
      */
-    public PlainBind<E> toPlain() {
-        return new PlainBind<>(this.path, this.requestMethod, this.content);
+    public PlainBind toPlain() {
+        return new PlainBind<>(this.path, this.requestMethod, this.result);
     }
 
     /**
@@ -142,8 +140,12 @@ public abstract class AbstractBind<E> {
      * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.xml.XmlBind
      *         XmlBind}
      */
-    public XmlBind<E> toXml() {
-        return new XmlBind<>(this.path, this.requestMethod, this.content);
+    public XmlBind toXml() {
+        return new XmlBind<>(this.path, this.requestMethod, this.result);
+    }
+
+    public Object transformResult() {
+        return result.generate();
     }
 
     /**
@@ -176,8 +178,7 @@ public abstract class AbstractBind<E> {
         if (!(obj instanceof AbstractBind)) {
             return false;
         }
-
-        AbstractBind<?> other = (AbstractBind<?>) obj;
+        AbstractBind other = (AbstractBind) obj;
         return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod);
     }
 
