@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 import com.github.dannil.urldatabind.model.RequestMethod;
-import com.github.dannil.urldatabind.model.Result;
+import com.github.dannil.urldatabind.model.Action;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.json.JsonBind;
 import com.github.dannil.urldatabind.model.bind.plain.PlainBind;
@@ -19,7 +19,7 @@ public abstract class AbstractBind {
 
     protected String path;
     protected RequestMethod requestMethod;
-    protected Result result;
+    protected Action action;
 
     /**
      * Overloaded constructor.
@@ -31,20 +31,20 @@ public abstract class AbstractBind {
      * @param content
      *            the content
      */
-    protected AbstractBind(String path, RequestMethod requestMethod, Result result) {
+    protected AbstractBind(String path, RequestMethod requestMethod, Action action) {
         if (path == null) {
             throw new IllegalArgumentException("Path can't be null");
         }
         if (requestMethod == null) {
             throw new IllegalArgumentException("RequestMethod can't be null");
         }
-        if (result == null) {
+        if (action == null) {
             throw new IllegalArgumentException("Content can't be null");
         }
 
         this.path = path;
         this.requestMethod = requestMethod;
-        this.result = result;
+        this.action = action;
     }
 
     /**
@@ -121,7 +121,7 @@ public abstract class AbstractBind {
      *         JsonBind}
      */
     public JsonBind toJson() {
-        return new JsonBind<>(this.path, this.requestMethod, this.result);
+        return new JsonBind<>(this.path, this.requestMethod, this.action);
     }
 
     /**
@@ -131,7 +131,7 @@ public abstract class AbstractBind {
      *         {@link com.github.dannil.urldatabind.model.bind.plain.PlainBind PlainBind}
      */
     public PlainBind toPlain() {
-        return new PlainBind<>(this.path, this.requestMethod, this.result);
+        return new PlainBind<>(this.path, this.requestMethod, this.action);
     }
 
     /**
@@ -141,11 +141,11 @@ public abstract class AbstractBind {
      *         XmlBind}
      */
     public XmlBind toXml() {
-        return new XmlBind<>(this.path, this.requestMethod, this.result);
+        return new XmlBind<>(this.path, this.requestMethod, this.action);
     }
 
     public Object transformResult() {
-        return result.generate();
+        return action.generate();
     }
 
     /**

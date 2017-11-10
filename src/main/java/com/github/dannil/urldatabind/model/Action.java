@@ -1,6 +1,6 @@
 package com.github.dannil.urldatabind.model;
 
-public interface Result {
+public interface Action {
 
     Object generate();
 

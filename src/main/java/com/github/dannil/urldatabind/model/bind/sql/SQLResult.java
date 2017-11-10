@@ -1,8 +1,8 @@
 package com.github.dannil.urldatabind.model.bind.sql;
 
-import com.github.dannil.urldatabind.model.Result;
+import com.github.dannil.urldatabind.model.Action;
 
-public class SQLResult implements Result {
+public class SQLResult implements Action {
 
     private String query;
 
