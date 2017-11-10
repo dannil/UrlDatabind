@@ -18,8 +18,8 @@ public class JsonBind extends AbstractBind {
 	 *            the path
 	 * @param requestMethod
 	 *            the HTTP request method
-	 * @param content
-	 *            the content
+	 * @param action
+	 *            the action
 	 */
 	public JsonBind(String path, RequestMethod requestMethod, Action action) {
 		super(path, requestMethod, action);

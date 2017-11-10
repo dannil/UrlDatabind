@@ -1,7 +1,8 @@
-package com.github.dannil.urldatabind.model.bind;
+package com.github.dannil.urldatabind.deprecated;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
+import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.result.Action;
 
 public class SQLBind extends AbstractBind {

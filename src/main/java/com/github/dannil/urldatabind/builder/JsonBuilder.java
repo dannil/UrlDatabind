@@ -40,7 +40,6 @@ public class JsonBuilder implements IBuilder<String> {
 		if (obj == null) {
 			return false;
 		}
-
 		return obj instanceof JsonBuilder;
 	}
 

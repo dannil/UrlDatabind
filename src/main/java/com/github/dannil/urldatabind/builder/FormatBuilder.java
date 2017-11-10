@@ -46,7 +46,7 @@ public final class FormatBuilder {
      */
     public Object getHttpFormat(Type type, Action action) {
         if (!this.builders.containsKey(type)) {
-            throw new IllegalArgumentException(String.format("No builder for type %s exists", type));
+            throw new IllegalArgumentException(String.format("No builder exists for type %s", type));
         }
         return this.builders.get(type).generate(action);
     }

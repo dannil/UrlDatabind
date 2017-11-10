@@ -1,9 +1,9 @@
 package com.github.dannil.urldatabind;
 
+import com.github.dannil.urldatabind.deprecated.SQLBind;
 import com.github.dannil.urldatabind.model.Person;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.bind.JsonBind;
-import com.github.dannil.urldatabind.model.bind.SQLBind;
 import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
 import com.github.dannil.urldatabind.model.bind.result.SQLResult;
 
