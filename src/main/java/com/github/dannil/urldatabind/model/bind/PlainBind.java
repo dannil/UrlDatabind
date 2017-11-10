@@ -1,8 +1,7 @@
-package com.github.dannil.urldatabind.model.bind.plain;
+package com.github.dannil.urldatabind.model.bind;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.AbstractBind;
 
 /**
  * Model for a plain bind.

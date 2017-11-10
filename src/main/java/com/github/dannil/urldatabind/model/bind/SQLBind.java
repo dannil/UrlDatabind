@@ -1,9 +1,8 @@
-package com.github.dannil.urldatabind.model.bind.sql;
+package com.github.dannil.urldatabind.model.bind;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
-import com.github.dannil.urldatabind.model.Action;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 
 public class SQLBind extends AbstractBind {
 

@@ -1,6 +1,6 @@
 package com.github.dannil.urldatabind.builder;
 
-import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 
 /**
  * Interface for builders.
@@ -13,12 +13,12 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 public interface IBuilder<T> {
 
     /**
-     * Generate an output of the bind based on the implementing builder.
+     * Generate an output of the action based on the implementing builder.
      * 
-     * @param bind
-     *            the bind
-     * @return a representation of the bind based on the implementing builder
+     * @param action
+     *            the action
+     * @return a representation of the action based on the implementing builder
      */
-    T generate(AbstractBind bind);
+    T generate(Action action);
 
 }

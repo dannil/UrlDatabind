@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
-import com.github.dannil.urldatabind.model.bind.json.JsonBind;
+import com.github.dannil.urldatabind.model.bind.JsonBind;
 
 @RunWith(JUnit4.class)
 public class FormatBuilderUnitTest {

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 
 /**
  * Builder class for converting a bind's content to HTTP format.
@@ -35,19 +36,19 @@ public final class FormatBuilder {
     }
 
     /**
-     * Returns the HTTP format of the bind based on the type.
+     * Returns the HTTP format of the action based on the type.
      * 
      * @param type
      *            the type
-     * @param bind
-     *            the bind
-     * @return the HTTP format of the bind based on the type
+     * @param action
+     *            the action
+     * @return the HTTP format of the action based on the type
      */
-    public Object getHttpFormat(Type type, AbstractBind bind) {
+    public Object getHttpFormat(Type type, Action action) {
         if (!this.builders.containsKey(type)) {
             throw new IllegalArgumentException(String.format("No builder for type %s exists", type));
         }
-        return this.builders.get(type).generate(bind);
+        return this.builders.get(type).generate(action);
     }
 
     /**

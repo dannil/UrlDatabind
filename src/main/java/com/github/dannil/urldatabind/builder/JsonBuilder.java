@@ -2,6 +2,7 @@ package com.github.dannil.urldatabind.builder;
 
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,8 +23,8 @@ public class JsonBuilder implements IBuilder<String> {
 	}
 
 	@Override
-	public String generate(AbstractBind<?> bind) {
-		return this.gson.toJson(bind.getContent());
+	public String generate(Action action) {
+		return this.gson.toJson(action.trigger());
 	}
 
 	@Override

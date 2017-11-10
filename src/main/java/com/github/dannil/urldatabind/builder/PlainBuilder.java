@@ -2,6 +2,7 @@ package com.github.dannil.urldatabind.builder;
 
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 
 /**
  * Builder for plain output (the {@link java.lang.Object#toString() toString()}
@@ -11,11 +12,11 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
  */
 public class PlainBuilder implements IBuilder<String> {
 
-	@Override
-	public String generate(AbstractBind<?> bind) {
-		return bind.getContent().toString();
-	}
-
+    @Override
+    public String generate(Action action) {
+        return String.valueOf(action.trigger());
+    }
+    
 	@Override
 	public int hashCode() {
 		return Type.PLAIN.hashCode();
@@ -29,7 +30,6 @@ public class PlainBuilder implements IBuilder<String> {
 		if (obj == null) {
 			return false;
 		}
-
 		return obj instanceof PlainBuilder;
 	}
 

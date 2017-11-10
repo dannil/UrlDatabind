@@ -8,7 +8,7 @@ import java.util.Locale;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.json.JsonBind;
+import com.github.dannil.urldatabind.model.bind.JsonBind;
 import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 
 import org.junit.Test;

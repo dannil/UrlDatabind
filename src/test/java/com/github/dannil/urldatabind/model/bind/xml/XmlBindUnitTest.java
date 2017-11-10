@@ -12,6 +12,7 @@ import org.junit.runners.JUnit4;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.XmlBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 
 @RunWith(JUnit4.class)

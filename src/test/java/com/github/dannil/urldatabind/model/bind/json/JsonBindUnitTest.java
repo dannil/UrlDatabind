@@ -14,6 +14,7 @@ import org.junit.runners.JUnit4;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.JsonBind;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 

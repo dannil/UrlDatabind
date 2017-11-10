@@ -1,6 +1,4 @@
-package com.github.dannil.urldatabind.model.bind.sql;
-
-import com.github.dannil.urldatabind.model.Action;
+package com.github.dannil.urldatabind.model.bind.result;
 
 public class SQLResult implements Action {
 
@@ -11,7 +9,7 @@ public class SQLResult implements Action {
     }
 
     @Override
-    public Object generate() {
+    public Object trigger() {
         return "sql";
     }
 

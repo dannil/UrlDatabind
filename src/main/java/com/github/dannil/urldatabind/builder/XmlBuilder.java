@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 import com.thoughtworks.xstream.XStream;
 
 /**
@@ -26,12 +27,12 @@ public class XmlBuilder implements IBuilder<String> {
 		this.xstream = new XStream();
 	}
 
-	@Override
-	public String generate(AbstractBind<?> bind) {
-		Class<?> clazz = bind.getContent().getClass();
-		this.xstream.alias(clazz.getSimpleName().toLowerCase(), clazz);
-		return this.xmlHeader + "\n" + this.xstream.toXML(bind.getContent());
-	}
+    @Override
+    public String generate(Action action) {
+//        Class<?> clazz = bind.getContent().getClass();
+//        this.xstream.alias(clazz.getSimpleName().toLowerCase(), clazz);
+        return this.xmlHeader + "\n" + this.xstream.toXML(action.trigger());
+    }
 
 	@Override
 	public int hashCode() {

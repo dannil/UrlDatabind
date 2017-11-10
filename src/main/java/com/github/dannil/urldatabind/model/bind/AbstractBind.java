@@ -4,11 +4,8 @@ import java.util.Objects;
 
 import com.github.dannil.urldatabind.builder.FormatBuilder;
 import com.github.dannil.urldatabind.model.RequestMethod;
-import com.github.dannil.urldatabind.model.Action;
 import com.github.dannil.urldatabind.model.Type;
-import com.github.dannil.urldatabind.model.bind.json.JsonBind;
-import com.github.dannil.urldatabind.model.bind.plain.PlainBind;
-import com.github.dannil.urldatabind.model.bind.xml.XmlBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 
 /**
  * Abstract bind which implements common functions for binds.
@@ -111,42 +108,42 @@ public abstract class AbstractBind {
      */
     public Object getHttpContent() {
         FormatBuilder formatBuilder = FormatBuilder.getInstance();
-        return formatBuilder.getHttpFormat(this.getType(), this);
+        return formatBuilder.getHttpFormat(this.getType(), this.action);
     }
 
     /**
      * Converts the bind to JSON format.
      * 
-     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.json.JsonBind
+     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.JsonBind
      *         JsonBind}
      */
     public JsonBind toJson() {
-        return new JsonBind<>(this.path, this.requestMethod, this.action);
+        return new JsonBind(this.path, this.requestMethod, this.action);
     }
 
     /**
      * Convert the bind to a plain format.
      * 
      * @return the bind as a
-     *         {@link com.github.dannil.urldatabind.model.bind.plain.PlainBind PlainBind}
+     *         {@link com.github.dannil.urldatabind.model.bind.PlainBind PlainBind}
      */
     public PlainBind toPlain() {
-        return new PlainBind<>(this.path, this.requestMethod, this.action);
+        return new PlainBind(this.path, this.requestMethod, this.action);
     }
 
     /**
      * Converts the bind to XML format.
      * 
-     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.xml.XmlBind
+     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.XmlBind
      *         XmlBind}
      */
     public XmlBind toXml() {
-        return new XmlBind<>(this.path, this.requestMethod, this.action);
+        return new XmlBind(this.path, this.requestMethod, this.action);
     }
 
-    public Object transformResult() {
-        return action.generate();
-    }
+//    public Object transformResult() {
+//        return action.trigger();
+//    }
 
     /**
      * Returns the type of the bind.
