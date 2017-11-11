@@ -121,7 +121,7 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("\"en_US\"", bind.getHttpContent());
+		assertEquals("\"en_US\"", bind.getContent());
 	}
 
 	@Test

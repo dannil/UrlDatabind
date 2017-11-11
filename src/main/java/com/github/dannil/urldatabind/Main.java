@@ -21,7 +21,7 @@ public class Main {
         Person person = new Person("Daniel", "Nilsson");
         ObjectResult objectResult = new ObjectResult(person);
         JsonBind jsonBind2 = new JsonBind("person/daniel", RequestMethod.GET, objectResult);
-        System.out.println(jsonBind2.getHttpContent());
+        System.out.println(jsonBind2.getContent());
         
         
     }

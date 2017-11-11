@@ -25,8 +25,8 @@ public abstract class AbstractBind {
      *            the path
      * @param requestMethod
      *            the HTTP request method
-     * @param content
-     *            the content
+     * @param action
+     *            the action
      */
     protected AbstractBind(String path, RequestMethod requestMethod, Action action) {
         if (path == null) {
@@ -38,7 +38,6 @@ public abstract class AbstractBind {
         if (action == null) {
             throw new IllegalArgumentException("Content can't be null");
         }
-
         this.path = path;
         this.requestMethod = requestMethod;
         this.action = action;
@@ -106,7 +105,7 @@ public abstract class AbstractBind {
      * 
      * @return the HTTP format of the content
      */
-    public Object getHttpContent() {
+    public Object getContent() {
         FormatBuilder formatBuilder = FormatBuilder.getInstance();
         return formatBuilder.getHttpFormat(this.getType(), this.action);
     }
@@ -140,10 +139,6 @@ public abstract class AbstractBind {
     public XmlBind toXml() {
         return new XmlBind(this.path, this.requestMethod, this.action);
     }
-
-//    public Object transformResult() {
-//        return action.trigger();
-//    }
 
     /**
      * Returns the type of the bind.

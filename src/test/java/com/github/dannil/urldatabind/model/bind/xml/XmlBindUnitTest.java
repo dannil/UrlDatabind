@@ -94,7 +94,7 @@ public class XmlBindUnitTest implements IBindUnitTest {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<locale>en_US</locale>", bind.getHttpContent());
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<locale>en_US</locale>", bind.getContent());
 	}
 
 	@Test

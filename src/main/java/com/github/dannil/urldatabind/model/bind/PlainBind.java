@@ -2,16 +2,14 @@ package com.github.dannil.urldatabind.model.bind;
 
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
+import com.github.dannil.urldatabind.model.bind.result.Action;
 
 /**
  * Model for a plain bind.
  * 
  * @author Daniel Nilsson
- *
- * @param <E>
- *            the type of the content to be held in this bind
  */
-public class PlainBind<E> extends AbstractBind<E> {
+public class PlainBind extends AbstractBind {
 
 	/**
 	 * Overloaded constructor.
@@ -20,11 +18,11 @@ public class PlainBind<E> extends AbstractBind<E> {
 	 *            the path
 	 * @param requestMethod
 	 *            the HTTP request method
-	 * @param content
-	 *            the content
+	 * @param action
+	 *            the action
 	 */
-	public PlainBind(String path, RequestMethod requestMethod, E content) {
-		super(path, requestMethod, content);
+	public PlainBind(String path, RequestMethod requestMethod, Action action) {
+		super(path, requestMethod, action);
 	}
 
 	@Override

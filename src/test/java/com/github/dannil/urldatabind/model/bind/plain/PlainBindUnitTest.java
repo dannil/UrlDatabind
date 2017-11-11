@@ -97,7 +97,7 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 		Locale locale = new Locale("en", "US");
 		AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(bind.getContent().toString(), bind.getHttpContent());
+		assertEquals(bind.getContent().toString(), bind.getContent());
 	}
 
 	@Test
