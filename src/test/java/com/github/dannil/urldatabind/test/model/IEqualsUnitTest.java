@@ -2,12 +2,12 @@ package com.github.dannil.urldatabind.test.model;
 
 public interface IEqualsUnitTest {
 
-	void equals();
+    void equals();
 
-	void equalsItself();
+    void equalsItself();
 
-	void notEqualsNull();
+    void notEqualsNull();
 
-	void notEqualsIncompatibleObject();
+    void notEqualsIncompatibleObject();
 
 }

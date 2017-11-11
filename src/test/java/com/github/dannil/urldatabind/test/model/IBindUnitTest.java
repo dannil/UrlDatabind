@@ -2,30 +2,30 @@ package com.github.dannil.urldatabind.test.model;
 
 public interface IBindUnitTest {
 
-	void createWithConstructor();
+    void createWithConstructor();
 
-	void getPath();
+    void getPath();
 
-	void setPath();
+    void setPath();
 
-	void getRequestMethod();
+    void getRequestMethod();
 
-	void setRequestMethod();
+    void setRequestMethod();
 
-	void getContent();
+    void getContent();
 
-	void setContent();
+    void setContent();
 
-	void getHttpContent();
+    void getHttpContent();
 
-	void getType();
+    void getType();
 
-	void getHttpType();
+    void getHttpType();
 
-	void toJson();
+    void toJson();
 
-	void toPlain();
+    void toPlain();
 
-	void toXml();
+    void toXml();
 
 }

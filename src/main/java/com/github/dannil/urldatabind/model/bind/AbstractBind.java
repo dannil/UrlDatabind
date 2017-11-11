@@ -123,8 +123,8 @@ public abstract class AbstractBind {
     /**
      * Convert the bind to a plain format.
      * 
-     * @return the bind as a
-     *         {@link com.github.dannil.urldatabind.model.bind.PlainBind PlainBind}
+     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.PlainBind
+     *         PlainBind}
      */
     public PlainBind toPlain() {
         return new PlainBind(this.path, this.requestMethod, this.action);

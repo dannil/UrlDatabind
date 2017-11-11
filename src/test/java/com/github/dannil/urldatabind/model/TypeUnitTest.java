@@ -10,18 +10,18 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class TypeUnitTest {
 
-	@Test
-	public void valueOf() {
-		Type type = Type.valueOf("JSON");
+    @Test
+    public void valueOf() {
+        Type type = Type.valueOf("JSON");
 
-		assertEquals(Type.JSON, type);
-	}
+        assertEquals(Type.JSON, type);
+    }
 
-	@Test
-	public void values() {
-		Type[] types = Type.values();
+    @Test
+    public void values() {
+        Type[] types = Type.values();
 
-		assertNotNull(types);
-	}
+        assertNotNull(types);
+    }
 
 }

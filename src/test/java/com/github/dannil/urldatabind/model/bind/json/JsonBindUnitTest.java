@@ -21,240 +21,240 @@ import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 @RunWith(JUnit4.class)
 public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
-	@Test
-	@Override
-	public void createWithConstructor() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void createWithConstructor() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertNotNull(bind);
-	}
+        assertNotNull(bind);
+    }
 
-	@Test(expected = IllegalArgumentException.class)
-	public void nullPathArgument() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>(null, RequestMethod.GET, locale);
-		
-		assertNull(bind);
-	}
+    @Test(expected = IllegalArgumentException.class)
+    public void nullPathArgument() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>(null, RequestMethod.GET, locale);
 
-	@Test(expected = IllegalArgumentException.class)
-	public void nullRequestMethodArgument() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", null, locale);
-		
-		assertNull(bind);
-	}
+        assertNull(bind);
+    }
 
-	@Test(expected = IllegalArgumentException.class)
-	public void nullContentArgument() {
-		// Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, null);
-		
-		assertNull(bind);
-	}
+    @Test(expected = IllegalArgumentException.class)
+    public void nullRequestMethodArgument() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", null, locale);
 
-	@Test
-	@Override
-	public void getPath() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertNull(bind);
+    }
 
-		assertEquals("test", bind.getPath());
-	}
+    @Test(expected = IllegalArgumentException.class)
+    public void nullContentArgument() {
+        // Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, null);
 
-	@Test
-	@Override
-	public void setPath() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertNull(bind);
+    }
 
-		bind.setPath("setTest");
+    @Test
+    @Override
+    public void getPath() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("setTest", bind.getPath());
-	}
+        assertEquals("test", bind.getPath());
+    }
 
-	@Test
-	@Override
-	public void getRequestMethod() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void setPath() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(RequestMethod.GET, bind.getRequestMethod());
-	}
+        bind.setPath("setTest");
 
-	@Test
-	@Override
-	public void setRequestMethod() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals("setTest", bind.getPath());
+    }
 
-		bind.setRequestMethod(RequestMethod.POST);
+    @Test
+    @Override
+    public void getRequestMethod() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(RequestMethod.POST, bind.getRequestMethod());
-	}
+        assertEquals(RequestMethod.GET, bind.getRequestMethod());
+    }
 
-	@Test
-	@Override
-	public void getContent() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void setRequestMethod() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(locale.getCountry(), bind.getContent().getCountry());
-	}
+        bind.setRequestMethod(RequestMethod.POST);
 
-	@Test
-	@Override
-	public void setContent() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals(RequestMethod.POST, bind.getRequestMethod());
+    }
 
-		Locale newLocale = new Locale("sv", "SE");
-		bind.setContent(newLocale);
+    @Test
+    @Override
+    public void getContent() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("SE", bind.getContent().getCountry());
-	}
+        assertEquals(locale.getCountry(), bind.getContent().getCountry());
+    }
 
-	@Test
-	@Override
-	public void getHttpContent() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void setContent() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals("\"en_US\"", bind.getContent());
-	}
+        Locale newLocale = new Locale("sv", "SE");
+        bind.setContent(newLocale);
 
-	@Test
-	@Override
-	public void getType() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals("SE", bind.getContent().getCountry());
+    }
 
-		assertEquals(Type.JSON, bind.getType());
-	}
+    @Test
+    @Override
+    public void getHttpContent() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-	@Test
-	@Override
-	public void getHttpType() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals("\"en_US\"", bind.getContent());
+    }
 
-		assertEquals("application/json", bind.getHttpType());
-	}
+    @Test
+    @Override
+    public void getType() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-	@Test
-	@Override
-	public void toJson() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals(Type.JSON, bind.getType());
+    }
 
-		AbstractBind<Locale> newBind = bind.toJson();
+    @Test
+    @Override
+    public void getHttpType() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(bind, newBind);
-	}
+        assertEquals("application/json", bind.getHttpType());
+    }
 
-	@Test
-	@Override
-	public void toPlain() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void toJson() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		AbstractBind<Locale> newBind = bind.toPlain();
+        AbstractBind<Locale> newBind = bind.toJson();
 
-		assertEquals(bind.getContent(), newBind.getContent());
-		assertEquals(bind.getPath(), newBind.getPath());
-		assertEquals(Type.PLAIN, newBind.getType());
-	}
+        assertEquals(bind, newBind);
+    }
 
-	@Test
-	@Override
-	public void toXml() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void toPlain() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		AbstractBind<Locale> newBind = bind.toXml();
+        AbstractBind<Locale> newBind = bind.toPlain();
 
-		assertEquals(bind.getContent(), newBind.getContent());
-		assertEquals(bind.getPath(), newBind.getPath());
-		assertEquals(Type.XML, newBind.getType());
-	}
+        assertEquals(bind.getContent(), newBind.getContent());
+        assertEquals(bind.getPath(), newBind.getPath());
+        assertEquals(Type.PLAIN, newBind.getType());
+    }
 
-	@Test
-	public void hashCodeEquals() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+    @Test
+    @Override
+    public void toXml() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> bind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-		assertEquals(b1.hashCode(), b2.hashCode());
-	}
+        AbstractBind<Locale> newBind = bind.toXml();
 
-	@Test
-	@Override
-	public void equals() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals(bind.getContent(), newBind.getContent());
+        assertEquals(bind.getPath(), newBind.getPath());
+        assertEquals(Type.XML, newBind.getType());
+    }
 
-		assertEquals(b1, b2);
-	}
+    @Test
+    public void hashCodeEquals() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        AbstractBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-	@Test
-	@Override
-	public void equalsItself() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals(b1.hashCode(), b2.hashCode());
+    }
 
-		assertEquals(b1, b1);
-	}
+    @Test
+    @Override
+    public void equals() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        AbstractBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-	@Test
-	@Override
-	public void notEqualsNull() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = null;
+        assertEquals(b1, b2);
+    }
 
-		assertNotEquals(b1, b2);
-	}
+    @Test
+    @Override
+    public void equalsItself() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-	@Test
-	@Override
-	public void notEqualsIncompatibleObject() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        assertEquals(b1, b1);
+    }
 
-		assertNotEquals(b1, locale);
-	}
+    @Test
+    @Override
+    public void notEqualsNull() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        AbstractBind<Locale> b2 = null;
 
-	@Test
-	public void notEqualsPath() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test1", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = new JsonBind<Locale>("test2", RequestMethod.GET, locale);
+        assertNotEquals(b1, b2);
+    }
 
-		assertNotEquals(b1, b2);
-	}
+    @Test
+    @Override
+    public void notEqualsIncompatibleObject() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-	@Test
-	public void notEqualsRequestMethod() {
-		Locale locale = new Locale("en", "US");
-		AbstractBind<Locale> b1 = new JsonBind<Locale>("test1", RequestMethod.GET, locale);
-		AbstractBind<Locale> b2 = new JsonBind<Locale>("test1", RequestMethod.POST, locale);
+        assertNotEquals(b1, locale);
+    }
 
-		assertNotEquals(b1, b2);
-	}
+    @Test
+    public void notEqualsPath() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test1", RequestMethod.GET, locale);
+        AbstractBind<Locale> b2 = new JsonBind<Locale>("test2", RequestMethod.GET, locale);
 
-	// @Test
-	// public void notEqualsContent() {
-	// Locale locale1 = new Locale("en", "US");
-	// JsonBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET,
-	// locale1);
-	//
-	// Locale locale2 = new Locale("sv", "SE");
-	// JsonBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET,
-	// locale2);
-	//
-	// assertNotEquals(b1, b2);
-	// }
+        assertNotEquals(b1, b2);
+    }
+
+    @Test
+    public void notEqualsRequestMethod() {
+        Locale locale = new Locale("en", "US");
+        AbstractBind<Locale> b1 = new JsonBind<Locale>("test1", RequestMethod.GET, locale);
+        AbstractBind<Locale> b2 = new JsonBind<Locale>("test1", RequestMethod.POST, locale);
+
+        assertNotEquals(b1, b2);
+    }
+
+    // @Test
+    // public void notEqualsContent() {
+    // Locale locale1 = new Locale("en", "US");
+    // JsonBind<Locale> b1 = new JsonBind<Locale>("test", RequestMethod.GET,
+    // locale1);
+    //
+    // Locale locale2 = new Locale("sv", "SE");
+    // JsonBind<Locale> b2 = new JsonBind<Locale>("test", RequestMethod.GET,
+    // locale2);
+    //
+    // assertNotEquals(b1, b2);
+    // }
 
 }
