@@ -9,6 +9,8 @@ import java.util.Locale;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.JsonBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
+import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
 import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 
 import org.junit.Test;
@@ -23,9 +25,10 @@ public class XmlBuilderUnitTest implements IEqualsUnitTest {
         IBuilder<String> xmlBuilder = new XmlBuilder();
 
         Locale locale = new Locale("en", "US");
-        JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        //JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-        assertNotNull(xmlBuilder.generate(jsonBind));
+        assertNotNull(xmlBuilder.generate(action));
     }
 
     @Test
