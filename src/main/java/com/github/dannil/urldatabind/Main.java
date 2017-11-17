@@ -3,7 +3,6 @@ package com.github.dannil.urldatabind;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.github.dannil.urldatabind.deprecated.SQLBind;
 import com.github.dannil.urldatabind.http.BindHttpServer;
 import com.github.dannil.urldatabind.model.Person;
 import com.github.dannil.urldatabind.model.RequestMethod;
@@ -11,7 +10,6 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.JsonBind;
 import com.github.dannil.urldatabind.model.bind.XmlBind;
 import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
-import com.github.dannil.urldatabind.model.bind.result.SQLResult;
 
 public class Main {
 
