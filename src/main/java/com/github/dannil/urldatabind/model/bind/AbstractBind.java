@@ -101,11 +101,11 @@ public abstract class AbstractBind {
     // }
 
     /**
-     * Returns the HTTP format of the content.
+     * Returns the HTTP content of the performed action.
      * 
-     * @return the HTTP format of the content
+     * @return the HTTP content of the performed action
      */
-    public Object getContent() {
+    public Object getHttpContent() {
         FormatBuilder formatBuilder = FormatBuilder.getInstance();
         return formatBuilder.getHttpFormat(this.getType(), this.action);
     }

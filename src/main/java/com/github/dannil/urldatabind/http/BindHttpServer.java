@@ -23,12 +23,12 @@ public class BindHttpServer {
                 case GET:
                     get(bind.getPath(), (request, response) -> {
                         response.type(bind.getHttpType());
-                        return bind.getContent();
+                        return bind.getHttpContent();
                     });
                 case POST:
                     post(bind.getPath(), (request, response) -> {
                         response.type(bind.getHttpType());
-                        return bind.getContent();
+                        return bind.getHttpContent();
                     });
             }
         }

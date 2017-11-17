@@ -15,6 +15,8 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.PlainBind;
 import com.github.dannil.urldatabind.model.bind.XmlBind;
+import com.github.dannil.urldatabind.model.bind.result.Action;
+import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
 import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 
@@ -25,7 +27,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void createWithConstructor() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         assertNotNull(bind);
     }
@@ -34,7 +37,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void getPath() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         assertEquals("test", bind.getPath());
     }
@@ -43,7 +47,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void setPath() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         bind.setPath("setTest");
 
@@ -54,7 +59,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void getRequestMethod() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         assertEquals(RequestMethod.GET, bind.getRequestMethod());
     }
@@ -63,7 +69,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void setRequestMethod() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         bind.setRequestMethod(RequestMethod.POST);
 
@@ -72,39 +79,41 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
     @Test
     @Override
-    public void getContent() {
-        Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
-
-        assertEquals(locale.getCountry(), bind.getContent().getCountry());
-    }
-
-    @Test
-    @Override
-    public void setContent() {
-        Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
-
-        Locale newLocale = new Locale("sv", "SE");
-        bind.setContent(newLocale);
-
-        assertEquals("SE", bind.getContent().getCountry());
-    }
-
-    @Test
-    @Override
     public void getHttpContent() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
-        assertEquals(bind.getContent().toString(), bind.getContent());
+        assertEquals("en_US", bind.getHttpContent());
     }
+
+//    @Test
+//    @Override
+//    public void setContent() {
+//        Locale locale = new Locale("en", "US");
+//        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+//
+//        Locale newLocale = new Locale("sv", "SE");
+//        bind.setContent(newLocale);
+//
+//        assertEquals("SE", bind.getHttpContent().getCountry());
+//    }
+
+//    @Test
+//    @Override
+//    public void getHttpContent() {
+//        Locale locale = new Locale("en", "US");
+//        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+//
+//        assertEquals(bind.getHttpContent().toString(), bind.getHttpContent());
+//    }
 
     @Test
     @Override
     public void getType() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         assertEquals(Type.PLAIN, bind.getType());
     }
@@ -113,7 +122,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void getHttpType() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
         assertEquals("text/plain", bind.getHttpType());
     }
@@ -122,11 +132,12 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void toJson() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
-        AbstractBind<Locale> newBind = bind.toJson();
+        AbstractBind newBind = bind.toJson();
 
-        assertEquals(bind.getContent(), newBind.getContent());
+        assertNotEquals(bind.getHttpContent(), newBind.getHttpContent());
         assertEquals(bind.getPath(), newBind.getPath());
         assertEquals(Type.JSON, newBind.getType());
     }
@@ -135,9 +146,10 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void toPlain() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new XmlBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
-        AbstractBind<Locale> newBind = bind.toPlain();
+        AbstractBind newBind = bind.toPlain();
 
         assertEquals(bind, newBind);
     }
@@ -146,11 +158,12 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void toXml() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> bind = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind bind = new PlainBind("test", RequestMethod.GET, action);
 
-        AbstractBind<Locale> newBind = bind.toXml();
+        AbstractBind newBind = bind.toXml();
 
-        assertEquals(bind.getContent(), newBind.getContent());
+        assertNotEquals(bind.getHttpContent(), newBind.getHttpContent());
         assertEquals(bind.getPath(), newBind.getPath());
         assertEquals(Type.XML, newBind.getType());
     }
@@ -159,8 +172,9 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void equals() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
-        AbstractBind<Locale> b2 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
+        AbstractBind b2 = new PlainBind("test", RequestMethod.GET, action);
 
         assertEquals(b1, b2);
     }
@@ -169,7 +183,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void equalsItself() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
 
         assertEquals(b1, b1);
     }
@@ -178,8 +193,9 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void notEqualsNull() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
-        AbstractBind<Locale> b2 = null;
+        Action action = new ObjectResult(locale);
+        AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
+        AbstractBind b2 = null;
 
         assertNotEquals(b1, b2);
     }
@@ -188,7 +204,8 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Override
     public void notEqualsIncompatibleObject() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> b1 = new PlainBind<Locale>("test", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
 
         assertNotEquals(b1, locale);
     }
@@ -196,8 +213,9 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Test
     public void notEqualsPath() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> b1 = new PlainBind<Locale>("test1", RequestMethod.GET, locale);
-        AbstractBind<Locale> b2 = new PlainBind<Locale>("test2", RequestMethod.GET, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
+        AbstractBind b2 = new PlainBind("test2", RequestMethod.GET, action);
 
         assertNotEquals(b1, b2);
     }
@@ -205,8 +223,9 @@ public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
     @Test
     public void notEqualsRequestMethod() {
         Locale locale = new Locale("en", "US");
-        AbstractBind<Locale> b1 = new PlainBind<Locale>("test1", RequestMethod.GET, locale);
-        AbstractBind<Locale> b2 = new PlainBind<Locale>("test1", RequestMethod.POST, locale);
+        Action action = new ObjectResult(locale);
+        AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
+        AbstractBind b2 = new PlainBind("test1", RequestMethod.POST, action);
 
         assertNotEquals(b1, b2);
     }

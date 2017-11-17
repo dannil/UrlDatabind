@@ -104,12 +104,12 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
     @Test
     @Override
-    public void getContent() {
+    public void getHttpContent() {
         Locale locale = new Locale("en", "US");
         Action action = new ObjectResult(locale);
         AbstractBind bind = new JsonBind("test", RequestMethod.GET, action);
 
-        assertEquals("\"en_US\"", bind.getContent());
+        assertEquals("\"en_US\"", bind.getHttpContent());
     }
 
 //    @Test
@@ -174,7 +174,7 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
         AbstractBind newBind = bind.toPlain();
 
-        assertNotEquals(bind.getContent(), newBind.getContent());
+        assertNotEquals(bind.getHttpContent(), newBind.getHttpContent());
         assertEquals(bind.getPath(), newBind.getPath());
         assertEquals(Type.PLAIN, newBind.getType());
     }
@@ -188,7 +188,7 @@ public class JsonBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
 
         AbstractBind newBind = bind.toXml();
 
-        assertNotEquals(bind.getContent(), newBind.getContent());
+        assertNotEquals(bind.getHttpContent(), newBind.getHttpContent());
         assertEquals(bind.getPath(), newBind.getPath());
         assertEquals(Type.XML, newBind.getType());
     }

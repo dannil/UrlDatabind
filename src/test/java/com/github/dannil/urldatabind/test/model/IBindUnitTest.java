@@ -12,11 +12,11 @@ public interface IBindUnitTest {
 
     void setRequestMethod();
 
-    void getContent();
+    //void getContent();
 
     //void setContent();
 
-    //void getHttpContent();
+    void getHttpContent();
 
     void getType();
 
