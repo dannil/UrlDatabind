@@ -11,14 +11,14 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.JsonBind;
 import com.github.dannil.urldatabind.model.bind.result.Action;
 import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
-import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
+import com.github.dannil.urldatabind.test.model.IEqualsTest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PlainBuilderTest implements IEqualsUnitTest {
+public class PlainBuilderTest implements IEqualsTest {
 
     @Test
     public void generate() {

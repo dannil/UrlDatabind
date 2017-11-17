@@ -1,6 +1,6 @@
 package com.github.dannil.urldatabind.test.model;
 
-public interface IEqualsUnitTest {
+public interface IEqualsTest {
 
     void equals();
 

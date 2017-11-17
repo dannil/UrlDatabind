@@ -1,6 +1,6 @@
 package com.github.dannil.urldatabind.test.model;
 
-public interface IBindUnitTest {
+public interface IBindTest {
 
     void createWithConstructor();
 

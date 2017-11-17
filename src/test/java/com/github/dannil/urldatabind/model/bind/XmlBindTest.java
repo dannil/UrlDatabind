@@ -16,11 +16,11 @@ import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.XmlBind;
 import com.github.dannil.urldatabind.model.bind.result.Action;
 import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
-import com.github.dannil.urldatabind.test.model.IBindUnitTest;
-import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
+import com.github.dannil.urldatabind.test.model.IBindTest;
+import com.github.dannil.urldatabind.test.model.IEqualsTest;
 
 @RunWith(JUnit4.class)
-public class XmlBindTest implements IBindUnitTest, IEqualsUnitTest {
+public class XmlBindTest implements IBindTest, IEqualsTest {
 
     @Test
     @Override
