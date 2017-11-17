@@ -1,7 +1,7 @@
 package com.github.dannil.urldatabind.model.bind.result;
 
-public interface Action {
+public interface Action<E> {
 
-    Object trigger();
+    E trigger();
 
 }
