@@ -1,15 +1,15 @@
 package com.github.dannil.urldatabind.model.bind.result;
 
-public class ObjectResult<E> implements Action<E> {
+public class ObjectResult implements Action {
 
-    private E object;
+    private Object object;
 
-    public ObjectResult(E object) {
+    public ObjectResult(Object object) {
         this.object = object;
     }
 
     @Override
-    public E trigger() {
+    public Object trigger() {
         return this.object;
     }
 

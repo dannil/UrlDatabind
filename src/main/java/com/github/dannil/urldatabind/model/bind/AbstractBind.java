@@ -12,7 +12,7 @@ import com.github.dannil.urldatabind.model.bind.result.Action;
  *
  * @author Daniel Nilsson
  */
-public abstract class AbstractBind<E> {
+public abstract class AbstractBind {
 
     protected String path;
     protected RequestMethod requestMethod;

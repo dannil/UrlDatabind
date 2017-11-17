@@ -14,9 +14,9 @@ public interface IBindUnitTest {
 
     void getContent();
 
-    void setContent();
+    //void setContent();
 
-    void getHttpContent();
+    //void getHttpContent();
 
     void getType();
 
