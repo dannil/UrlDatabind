@@ -20,7 +20,7 @@ import com.github.dannil.urldatabind.model.bind.result.Action;
 import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
 
 @RunWith(JUnit4.class)
-public class FormatBuilderUnitTest {
+public class FormatBuilderTest {
 
     @Test
     public void getInstance() {

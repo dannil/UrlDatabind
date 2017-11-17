@@ -18,31 +18,31 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PlainBuilderUnitTest implements IEqualsUnitTest {
+public class JsonBuilderTest implements IEqualsUnitTest {
 
     @Test
     public void generate() {
-        IBuilder<String> plainBuilder = new PlainBuilder();
+        IBuilder<String> jsonBuilder = new JsonBuilder();
 
         Locale locale = new Locale("en", "US");
         Action action = new ObjectResult(locale);
-        //JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
+        //JsonBind jsonBind = new JsonBind("test", RequestMethod.GET, action);
 
-        assertNotNull(plainBuilder.generate(action));
+        assertNotNull(jsonBuilder.generate(action));
     }
 
     @Test
     public void testHashCode() {
-        IBuilder<String> plainBuilder = new PlainBuilder();
+        IBuilder<String> jsonBuilder = new JsonBuilder();
 
-        assertEquals(Type.PLAIN.hashCode(), plainBuilder.hashCode());
+        assertEquals(Type.JSON.hashCode(), jsonBuilder.hashCode());
     }
 
     @Test
     @Override
     public void equals() {
-        IBuilder<String> b1 = new PlainBuilder();
-        IBuilder<String> b2 = new PlainBuilder();
+        IBuilder<String> b1 = new JsonBuilder();
+        IBuilder<String> b2 = new JsonBuilder();
 
         assertEquals(b1, b2);
     }
@@ -50,7 +50,7 @@ public class PlainBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void equalsItself() {
-        IBuilder<String> b1 = new PlainBuilder();
+        IBuilder<String> b1 = new JsonBuilder();
 
         assertEquals(b1, b1);
     }
@@ -58,7 +58,7 @@ public class PlainBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void notEqualsNull() {
-        IBuilder<String> b1 = new PlainBuilder();
+        IBuilder<String> b1 = new JsonBuilder();
 
         assertNotEquals(b1, null);
     }
@@ -66,7 +66,7 @@ public class PlainBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void notEqualsIncompatibleObject() {
-        IBuilder<String> b1 = new PlainBuilder();
+        IBuilder<String> b1 = new JsonBuilder();
 
         assertNotEquals(b1, new Object());
     }

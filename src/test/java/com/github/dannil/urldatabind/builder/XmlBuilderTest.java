@@ -18,31 +18,31 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class JsonBuilderUnitTest implements IEqualsUnitTest {
+public class XmlBuilderTest implements IEqualsUnitTest {
 
     @Test
     public void generate() {
-        IBuilder<String> jsonBuilder = new JsonBuilder();
+        IBuilder<String> xmlBuilder = new XmlBuilder();
 
         Locale locale = new Locale("en", "US");
         Action action = new ObjectResult(locale);
-        //JsonBind jsonBind = new JsonBind("test", RequestMethod.GET, action);
+        //JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-        assertNotNull(jsonBuilder.generate(action));
+        assertNotNull(xmlBuilder.generate(action));
     }
 
     @Test
     public void testHashCode() {
-        IBuilder<String> jsonBuilder = new JsonBuilder();
+        IBuilder<String> xmlBuilder = new XmlBuilder();
 
-        assertEquals(Type.JSON.hashCode(), jsonBuilder.hashCode());
+        assertEquals(Type.XML.hashCode(), xmlBuilder.hashCode());
     }
 
     @Test
     @Override
     public void equals() {
-        IBuilder<String> b1 = new JsonBuilder();
-        IBuilder<String> b2 = new JsonBuilder();
+        IBuilder<String> b1 = new XmlBuilder();
+        IBuilder<String> b2 = new XmlBuilder();
 
         assertEquals(b1, b2);
     }
@@ -50,7 +50,7 @@ public class JsonBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void equalsItself() {
-        IBuilder<String> b1 = new JsonBuilder();
+        IBuilder<String> b1 = new XmlBuilder();
 
         assertEquals(b1, b1);
     }
@@ -58,7 +58,7 @@ public class JsonBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void notEqualsNull() {
-        IBuilder<String> b1 = new JsonBuilder();
+        IBuilder<String> b1 = new XmlBuilder();
 
         assertNotEquals(b1, null);
     }
@@ -66,7 +66,7 @@ public class JsonBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void notEqualsIncompatibleObject() {
-        IBuilder<String> b1 = new JsonBuilder();
+        IBuilder<String> b1 = new XmlBuilder();
 
         assertNotEquals(b1, new Object());
     }

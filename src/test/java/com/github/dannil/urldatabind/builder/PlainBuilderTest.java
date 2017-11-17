@@ -18,31 +18,31 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class XmlBuilderUnitTest implements IEqualsUnitTest {
+public class PlainBuilderTest implements IEqualsUnitTest {
 
     @Test
     public void generate() {
-        IBuilder<String> xmlBuilder = new XmlBuilder();
+        IBuilder<String> plainBuilder = new PlainBuilder();
 
         Locale locale = new Locale("en", "US");
         Action action = new ObjectResult(locale);
         //JsonBind<Locale> jsonBind = new JsonBind<Locale>("test", RequestMethod.GET, locale);
 
-        assertNotNull(xmlBuilder.generate(action));
+        assertNotNull(plainBuilder.generate(action));
     }
 
     @Test
     public void testHashCode() {
-        IBuilder<String> xmlBuilder = new XmlBuilder();
+        IBuilder<String> plainBuilder = new PlainBuilder();
 
-        assertEquals(Type.XML.hashCode(), xmlBuilder.hashCode());
+        assertEquals(Type.PLAIN.hashCode(), plainBuilder.hashCode());
     }
 
     @Test
     @Override
     public void equals() {
-        IBuilder<String> b1 = new XmlBuilder();
-        IBuilder<String> b2 = new XmlBuilder();
+        IBuilder<String> b1 = new PlainBuilder();
+        IBuilder<String> b2 = new PlainBuilder();
 
         assertEquals(b1, b2);
     }
@@ -50,7 +50,7 @@ public class XmlBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void equalsItself() {
-        IBuilder<String> b1 = new XmlBuilder();
+        IBuilder<String> b1 = new PlainBuilder();
 
         assertEquals(b1, b1);
     }
@@ -58,7 +58,7 @@ public class XmlBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void notEqualsNull() {
-        IBuilder<String> b1 = new XmlBuilder();
+        IBuilder<String> b1 = new PlainBuilder();
 
         assertNotEquals(b1, null);
     }
@@ -66,7 +66,7 @@ public class XmlBuilderUnitTest implements IEqualsUnitTest {
     @Test
     @Override
     public void notEqualsIncompatibleObject() {
-        IBuilder<String> b1 = new XmlBuilder();
+        IBuilder<String> b1 = new PlainBuilder();
 
         assertNotEquals(b1, new Object());
     }

@@ -4,24 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
-public class TypeUnitTest {
+public class RequestMethodTest {
 
     @Test
     public void valueOf() {
-        Type type = Type.valueOf("JSON");
+        RequestMethod method = RequestMethod.valueOf("GET");
 
-        assertEquals(Type.JSON, type);
+        assertEquals(RequestMethod.GET, method);
     }
 
     @Test
     public void values() {
-        Type[] types = Type.values();
+        RequestMethod[] methods = RequestMethod.values();
 
-        assertNotNull(types);
+        assertNotNull(methods);
     }
 
 }

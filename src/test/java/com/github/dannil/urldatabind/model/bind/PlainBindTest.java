@@ -1,4 +1,4 @@
-package com.github.dannil.urldatabind.model.bind.plain;
+package com.github.dannil.urldatabind.model.bind;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -21,7 +21,7 @@ import com.github.dannil.urldatabind.test.model.IBindUnitTest;
 import com.github.dannil.urldatabind.test.model.IEqualsUnitTest;
 
 @RunWith(JUnit4.class)
-public class PlainBindUnitTest implements IBindUnitTest, IEqualsUnitTest {
+public class PlainBindTest implements IBindUnitTest, IEqualsUnitTest {
 
     @Test
     @Override
