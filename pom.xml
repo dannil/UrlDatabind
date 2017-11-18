@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
   <artifactId>urldatabind</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
 
   <name>UrlDatabind</name>
   <description>Bind data to URL endpoints</description>
