@@ -217,7 +217,7 @@ public class PlainBindTest implements IBindTest, IEqualsTest {
 		Locale locale = new Locale("en", "US");
 		Action action = new ObjectResult(locale);
 		AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
-		AbstractBind b2 = new PlainBind("test2", RequestMethod.GET, action);
+		AbstractBind b2 = new PlainBind("test1", RequestMethod.GET, action);
 
 		assertNotEquals(b1, b2);
 	}
@@ -227,7 +227,7 @@ public class PlainBindTest implements IBindTest, IEqualsTest {
 		Locale locale = new Locale("en", "US");
 		Action action = new ObjectResult(locale);
 		AbstractBind b1 = new PlainBind("test", RequestMethod.GET, action);
-		AbstractBind b2 = new PlainBind("test1", RequestMethod.POST, action);
+		AbstractBind b2 = new PlainBind("test", RequestMethod.POST, action);
 
 		assertNotEquals(b1, b2);
 	}

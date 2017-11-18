@@ -24,6 +24,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.urldatabind.Main;
+import com.github.dannil.urldatabind.http.BindHttpServer;
+import com.github.dannil.urldatabind.model.Person;
+import com.github.dannil.urldatabind.model.bind.result.SQLResult;
 import com.github.dannil.urldatabind.test.model.IBindTest;
 import com.github.dannil.urldatabind.test.model.IEqualsTest;
 import com.github.dannil.urldatabind.test.utility.Files;
@@ -172,9 +176,8 @@ public class TestIT {
 		List<File> testFiles = Files.find(execPath + "/src/test/java/com/github/dannil/urldatabind", "*.java");
 
 		// Filter out some classes from the list
-		// Filters.files(files, AbstractClientIT.class, AbstractClientTest.class,
-		// AbstractContainerClientTest.class,
-		// SCBClientIT.class, SCBClientTest.class);
+		// TODO Fix this filter list when refactoring is complete
+		Filters.files(mainFiles, Main.class, Person.class, BindHttpServer.class, SQLResult.class);
 
 		List<Class<?>> matchedClasses = new ArrayList<>();
 		for (File fileMain : mainFiles) {

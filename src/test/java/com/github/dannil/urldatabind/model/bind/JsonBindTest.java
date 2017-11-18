@@ -252,7 +252,7 @@ public class JsonBindTest implements IBindTest, IEqualsTest {
 		Locale locale = new Locale("en", "US");
 		Action action = new ObjectResult(locale);
 		AbstractBind b1 = new JsonBind("test", RequestMethod.GET, action);
-		AbstractBind b2 = new JsonBind("test2", RequestMethod.GET, action);
+		AbstractBind b2 = new JsonBind("test1", RequestMethod.GET, action);
 
 		assertNotEquals(b1, b2);
 	}
@@ -262,7 +262,7 @@ public class JsonBindTest implements IBindTest, IEqualsTest {
 		Locale locale = new Locale("en", "US");
 		Action action = new ObjectResult(locale);
 		AbstractBind b1 = new JsonBind("test", RequestMethod.GET, action);
-		AbstractBind b2 = new JsonBind("test1", RequestMethod.POST, action);
+		AbstractBind b2 = new JsonBind("test", RequestMethod.POST, action);
 
 		assertNotEquals(b1, b2);
 	}

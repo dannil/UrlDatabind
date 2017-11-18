@@ -216,7 +216,7 @@ public class XmlBindTest implements IBindTest, IEqualsTest {
 		Locale locale = new Locale("en", "US");
 		Action action = new ObjectResult(locale);
 		AbstractBind b1 = new XmlBind("test", RequestMethod.GET, action);
-		AbstractBind b2 = new XmlBind("test2", RequestMethod.GET, action);
+		AbstractBind b2 = new XmlBind("test1", RequestMethod.GET, action);
 
 		assertNotEquals(b1, b2);
 	}
@@ -226,7 +226,7 @@ public class XmlBindTest implements IBindTest, IEqualsTest {
 		Locale locale = new Locale("en", "US");
 		Action action = new ObjectResult(locale);
 		AbstractBind b1 = new XmlBind("test", RequestMethod.GET, action);
-		AbstractBind b2 = new XmlBind("test1", RequestMethod.POST, action);
+		AbstractBind b2 = new XmlBind("test", RequestMethod.POST, action);
 
 		assertNotEquals(b1, b2);
 	}
