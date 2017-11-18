@@ -13,7 +13,9 @@ env:
 matrix:
   include:
     - os: linux
-      jdk: oraclejdk7
+      jdk: openjdk7
+    - os: linux
+      jdk: openjdk8
     - os: linux
       jdk: oraclejdk8
       # SonarQube addon needs to run with at least Java 8
@@ -21,6 +23,10 @@ matrix:
         - mvn install -Dmaven.javadoc.skip=true -B -V
         # Make sure we are on dev for running SonarQube
         - if [[ $TRAVIS_BRANCH == dev ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
+    - os: linux
+      jdk: openjdk9
+    - os: linux
+      jdk: oraclejdk9
 
 install:
 - true
