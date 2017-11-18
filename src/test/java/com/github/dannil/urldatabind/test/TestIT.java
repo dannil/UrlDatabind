@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.dannil.urldatabind.Main;
-import com.github.dannil.urldatabind.http.BindHttpServer;
 import com.github.dannil.urldatabind.model.bind.result.SQLResult;
 import com.github.dannil.urldatabind.test.model.IBindTest;
 import com.github.dannil.urldatabind.test.model.IEqualsTest;
@@ -176,7 +175,7 @@ public class TestIT {
 
         // Filter out some classes from the list
         // TODO Fix this filter list when refactoring is complete
-        Filters.files(mainFiles, Main.class, BindHttpServer.class, SQLResult.class);
+        Filters.files(mainFiles, Main.class, SQLResult.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File fileMain : mainFiles) {

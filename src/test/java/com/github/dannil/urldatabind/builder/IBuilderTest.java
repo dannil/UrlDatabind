@@ -3,7 +3,7 @@ package com.github.dannil.urldatabind.builder;
 import static org.junit.Assert.assertNotNull;
 
 import com.github.dannil.urldatabind.model.bind.result.Action;
-import com.github.dannil.urldatabind.model.bind.result.TextResult;
+import com.github.dannil.urldatabind.model.bind.result.StringResult;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ public class IBuilderTest {
     @Test
     public void generate() {
         DummyBuilder dummy = new DummyBuilder();
-        Action action = new TextResult("hello");
+        Action action = new StringResult("hello");
 
         assertNotNull(dummy.generate(action));
     }

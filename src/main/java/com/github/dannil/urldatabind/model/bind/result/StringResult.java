@@ -12,15 +12,30 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.urldatabind.model;
+package com.github.dannil.urldatabind.model.bind.result;
 
 /**
- * <p>Enumerable of HTTP methods.</p>
+ * <p>Result class which accepts a string.</p>
  *
  * @since 0.1.0
  */
-public enum RequestMethod {
+public class StringResult implements Action {
 
-    GET, POST;
+    private String s;
+
+    /**
+     * <p>Default constructor.</p>
+     *
+     * @param s
+     *            the string
+     */
+    public StringResult(String s) {
+        this.s = s;
+    }
+
+    @Override
+    public Object trigger() {
+        return this.s;
+    }
 
 }

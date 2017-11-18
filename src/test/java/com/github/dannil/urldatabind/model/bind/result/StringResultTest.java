@@ -8,12 +8,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class TextResultTest {
+public class StringResultTest {
 
     @Test
     public void createWithConstructor() {
         String text = "foo";
-        TextResult result = new TextResult(text);
+        StringResult result = new StringResult(text);
 
         assertNotNull(result);
     }
@@ -21,7 +21,7 @@ public class TextResultTest {
     @Test
     public void trigger() {
         String text = "foo";
-        TextResult result = new TextResult(text);
+        StringResult result = new StringResult(text);
 
         assertEquals(text, result.trigger());
     }

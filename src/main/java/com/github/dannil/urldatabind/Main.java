@@ -10,8 +10,6 @@ import com.github.dannil.urldatabind.model.bind.result.ObjectResult;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
         // SQLResult sqlResult = new SQLResult("SELECT * FROM test");
         // JsonBind jsonBind = new JsonBind("test/abc", RequestMethod.GET, sqlResult);
         // System.out.println(jsonBind.getHttpContent());

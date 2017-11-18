@@ -1,3 +1,17 @@
+/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package com.github.dannil.urldatabind.model.bind;
 
 import java.util.Objects;
@@ -8,19 +22,21 @@ import com.github.dannil.urldatabind.model.Type;
 import com.github.dannil.urldatabind.model.bind.result.Action;
 
 /**
- * Abstract bind which implements common functions for binds.
+ * <p>Abstract bind which implements common functions for binds.</p>
  *
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public abstract class AbstractBind {
 
-    protected String path;
-    protected RequestMethod requestMethod;
-    protected Action action;
+    private String path;
+
+    private RequestMethod requestMethod;
+
+    private Action action;
 
     /**
-     * Overloaded constructor.
-     * 
+     * <p>Overloaded constructor.</p>
+     *
      * @param path
      *            the path
      * @param requestMethod
@@ -44,8 +60,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Getter for path.
-     * 
+     * <p>Getter for path.</p>
+     *
      * @return the path
      */
     public String getPath() {
@@ -53,8 +69,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Setter for path.
-     * 
+     * <p>Setter for path.</p>
+     *
      * @param path
      *            the path
      */
@@ -63,8 +79,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Getter for request method.
-     * 
+     * <p>Getter for request method.</p>
+     *
      * @return the request method
      */
     public RequestMethod getRequestMethod() {
@@ -72,8 +88,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Setter for request method.
-     * 
+     * <p>Setter for request method.</p>
+     *
      * @param requestMethod
      *            the request method
      */
@@ -101,8 +117,8 @@ public abstract class AbstractBind {
     // }
 
     /**
-     * Returns the HTTP content of the performed action.
-     * 
+     * <p>Returns the HTTP content of the performed action.</p>
+     *
      * @return the HTTP content of the performed action
      */
     public Object getHttpContent() {
@@ -111,8 +127,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Converts the bind to JSON format.
-     * 
+     * <p>Converts the bind to JSON format.</p>
+     *
      * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.JsonBind
      *         JsonBind}
      */
@@ -121,8 +137,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Convert the bind to a plain format.
-     * 
+     * <p>Convert the bind to a plain format.</p>
+     *
      * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.PlainBind
      *         PlainBind}
      */
@@ -131,8 +147,8 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Converts the bind to XML format.
-     * 
+     * <p>Converts the bind to XML format.</p>
+     *
      * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.XmlBind
      *         XmlBind}
      */
@@ -141,15 +157,15 @@ public abstract class AbstractBind {
     }
 
     /**
-     * Returns the type of the bind.
-     * 
+     * <p>Returns the type of the bind.</p>
+     *
      * @return the type
      */
     public abstract Type getType();
 
     /**
-     * Returns the HTTP type of the bind.
-     * 
+     * <p>Returns the HTTP type of the bind.</p>
+     *
      * @return the HTTP type
      */
     public abstract String getHttpType();
