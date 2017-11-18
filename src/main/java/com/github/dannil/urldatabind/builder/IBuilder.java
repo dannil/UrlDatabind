@@ -12,13 +12,13 @@ import com.github.dannil.urldatabind.model.bind.result.Action;
  */
 public interface IBuilder<T> {
 
-    /**
-     * Generate an output of the action based on the implementing builder.
-     * 
-     * @param action
-     *            the action
-     * @return a representation of the action based on the implementing builder
-     */
-    T generate(Action action);
+	/**
+	 * Generate an output of the action based on the implementing builder.
+	 * 
+	 * @param action
+	 *            the action
+	 * @return a representation of the action based on the implementing builder
+	 */
+	T generate(Action action);
 
 }

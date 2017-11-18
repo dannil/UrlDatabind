@@ -98,68 +98,71 @@ public class TestIT {
 		}
 		assertTrue("Classes not annotated with RunWith: " + matchedClasses.toString(), matchedClasses.isEmpty());
 	}
-//
-//	@Test
-//	public void checkForCorrectPackageAndClassNames() {
-//		String execPath = System.getProperty("user.dir");
-//
-//		// Find files matching the wildcard pattern
-//		List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/urldatabind", "*.java");
-//
-//		// Filter out some classes from the list
-//		// Filters.files(files, AbstractClientIT.class, AbstractClientTest.class,
-//		// AbstractContainerClientTest.class,
-//		// SCBClientIT.class, SCBClientTest.class);
-//
-//		List<Class<?>> matchedClasses = new ArrayList<>();
-//		for (File file : files) {
-//			// Convert path into binary name
-//			String binaryName = Files.fileToBinaryName(file);
-//
-//			// Reflect the binary name into a concrete Java class
-//			Class<?> clazz = null;
-//			try {
-//				clazz = Class.forName(binaryName);
-//				System.out.println(clazz.getSimpleName());
-//				String packageName = clazz.getPackage().getName();
-//				System.out.println(packageName);
-//
-//				String toBeginFrom = ".";
-//				int beginIndex = packageName.lastIndexOf(toBeginFrom) + 1;
-//				String sub = packageName.substring(beginIndex);
-//				System.out.println("sub: " + sub);
-//				
-//				String className = clazz.getSimpleName();
-//				String classNameWithoutTestPart = className.replace("Test", "").replace("IT", "").toLowerCase();
-//				System.out.println(classNameWithoutTestPart);
-//				
-////				String lastPart = sub.replace(".", "").concat("client");
-////				System.out.println("lastPart: " + lastPart);
-//				
-//				int index = classNameWithoutTestPart.toLowerCase().indexOf(sub);
-//				if (index < 0) {
-//					matchedClasses.add(clazz);
-//				}
-//
-////				if (className.toLowerCase().indexOf(classNameWithoutTestPart) > 0) {
-////					matchedClasses.add(clazz);
-////				}
-//				
-////				if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
-////					matchedClasses.add(clazz);
-////				}
-//				System.out.println();
-//			} catch (ClassNotFoundException e) {
-//				// Class could not be created; respond with an assertion that'll always
-//				// fail
-//				e.printStackTrace();
-//				assertTrue(e.getMessage(), false);
-//			}
-//		}
-//		assertTrue("Classes not having matching package and class name: " + matchedClasses.toString(),
-//				matchedClasses.isEmpty());
-//	}
-	
+	//
+	// @Test
+	// public void checkForCorrectPackageAndClassNames() {
+	// String execPath = System.getProperty("user.dir");
+	//
+	// // Find files matching the wildcard pattern
+	// List<File> files = Files.find(execPath +
+	// "/src/test/java/com/github/dannil/urldatabind", "*.java");
+	//
+	// // Filter out some classes from the list
+	// // Filters.files(files, AbstractClientIT.class, AbstractClientTest.class,
+	// // AbstractContainerClientTest.class,
+	// // SCBClientIT.class, SCBClientTest.class);
+	//
+	// List<Class<?>> matchedClasses = new ArrayList<>();
+	// for (File file : files) {
+	// // Convert path into binary name
+	// String binaryName = Files.fileToBinaryName(file);
+	//
+	// // Reflect the binary name into a concrete Java class
+	// Class<?> clazz = null;
+	// try {
+	// clazz = Class.forName(binaryName);
+	// System.out.println(clazz.getSimpleName());
+	// String packageName = clazz.getPackage().getName();
+	// System.out.println(packageName);
+	//
+	// String toBeginFrom = ".";
+	// int beginIndex = packageName.lastIndexOf(toBeginFrom) + 1;
+	// String sub = packageName.substring(beginIndex);
+	// System.out.println("sub: " + sub);
+	//
+	// String className = clazz.getSimpleName();
+	// String classNameWithoutTestPart = className.replace("Test", "").replace("IT",
+	// "").toLowerCase();
+	// System.out.println(classNameWithoutTestPart);
+	//
+	//// String lastPart = sub.replace(".", "").concat("client");
+	//// System.out.println("lastPart: " + lastPart);
+	//
+	// int index = classNameWithoutTestPart.toLowerCase().indexOf(sub);
+	// if (index < 0) {
+	// matchedClasses.add(clazz);
+	// }
+	//
+	//// if (className.toLowerCase().indexOf(classNameWithoutTestPart) > 0) {
+	//// matchedClasses.add(clazz);
+	//// }
+	//
+	//// if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+	//// matchedClasses.add(clazz);
+	//// }
+	// System.out.println();
+	// } catch (ClassNotFoundException e) {
+	// // Class could not be created; respond with an assertion that'll always
+	// // fail
+	// e.printStackTrace();
+	// assertTrue(e.getMessage(), false);
+	// }
+	// }
+	// assertTrue("Classes not having matching package and class name: " +
+	// matchedClasses.toString(),
+	// matchedClasses.isEmpty());
+	// }
+
 	@Test
 	public void checkForMatchingNameAndPackage() {
 		String execPath = System.getProperty("user.dir");
@@ -177,7 +180,7 @@ public class TestIT {
 		for (File fileMain : mainFiles) {
 			// Convert path into binary name
 			String binaryNameMain = Files.fileToBinaryName(fileMain);
-			
+
 			// Reflect the binary name into a concrete Java class
 			Class<?> clazz = null;
 			try {
@@ -189,7 +192,7 @@ public class TestIT {
 				e.printStackTrace();
 				assertTrue(e.getMessage(), false);
 			}
-			
+
 			for (File fileTest : testFiles) {
 				String binaryNameTest = Files.fileToBinaryName(fileTest);
 				if (binaryNameTest.startsWith(binaryNameMain)) {

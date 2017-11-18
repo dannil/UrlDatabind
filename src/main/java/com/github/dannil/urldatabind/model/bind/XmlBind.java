@@ -11,28 +11,28 @@ import com.github.dannil.urldatabind.model.bind.result.Action;
  */
 public class XmlBind extends AbstractBind {
 
-    /**
-     * Overloaded constructor.
-     * 
-     * @param path
-     *            the path
-     * @param requestMethod
-     *            the HTTP request method
-     * @param action
-     *            the action
-     */
-    public XmlBind(String path, RequestMethod requestMethod, Action action) {
-        super(path, requestMethod, action);
-    }
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param path
+	 *            the path
+	 * @param requestMethod
+	 *            the HTTP request method
+	 * @param action
+	 *            the action
+	 */
+	public XmlBind(String path, RequestMethod requestMethod, Action action) {
+		super(path, requestMethod, action);
+	}
 
-    @Override
-    public Type getType() {
-        return Type.XML;
-    }
+	@Override
+	public Type getType() {
+		return Type.XML;
+	}
 
-    @Override
-    public String getHttpType() {
-        return "application/xml";
-    }
+	@Override
+	public String getHttpType() {
+		return "application/xml";
+	}
 
 }

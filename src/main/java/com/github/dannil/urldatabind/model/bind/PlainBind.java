@@ -11,28 +11,28 @@ import com.github.dannil.urldatabind.model.bind.result.Action;
  */
 public class PlainBind extends AbstractBind {
 
-    /**
-     * Overloaded constructor.
-     * 
-     * @param path
-     *            the path
-     * @param requestMethod
-     *            the HTTP request method
-     * @param action
-     *            the action
-     */
-    public PlainBind(String path, RequestMethod requestMethod, Action action) {
-        super(path, requestMethod, action);
-    }
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param path
+	 *            the path
+	 * @param requestMethod
+	 *            the HTTP request method
+	 * @param action
+	 *            the action
+	 */
+	public PlainBind(String path, RequestMethod requestMethod, Action action) {
+		super(path, requestMethod, action);
+	}
 
-    @Override
-    public Type getType() {
-        return Type.PLAIN;
-    }
+	@Override
+	public Type getType() {
+		return Type.PLAIN;
+	}
 
-    @Override
-    public String getHttpType() {
-        return "text/plain";
-    }
+	@Override
+	public String getHttpType() {
+		return "text/plain";
+	}
 
 }
