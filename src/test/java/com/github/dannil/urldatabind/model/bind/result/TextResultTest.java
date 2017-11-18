@@ -10,20 +10,20 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class TextResultTest {
 
-	@Test
-	public void createWithConstructor() {
-		String text = "foo";
-		TextResult result = new TextResult(text);
-		
-		assertNotNull(result);
-	}
-	
-	@Test
-	public void trigger() {
-		String text = "foo";
-		TextResult result = new TextResult(text);
-		
-		assertEquals(text, result.trigger());
-	}
-	
+    @Test
+    public void createWithConstructor() {
+        String text = "foo";
+        TextResult result = new TextResult(text);
+
+        assertNotNull(result);
+    }
+
+    @Test
+    public void trigger() {
+        String text = "foo";
+        TextResult result = new TextResult(text);
+
+        assertEquals(text, result.trigger());
+    }
+
 }

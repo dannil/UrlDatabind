@@ -9,20 +9,20 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class ActionTest {
 
-	private class DummyAction implements Action {
+    private class DummyAction implements Action {
 
-		@Override
-		public Object trigger() {
-			return Math.PI;
-		}
-		
-	}
-	
-	@Test
-	public void trigger() {
-		DummyAction dummy = new DummyAction();
-		
-		assertEquals(Math.PI, dummy.trigger());
-	}
-	
+        @Override
+        public Object trigger() {
+            return Math.PI;
+        }
+
+    }
+
+    @Test
+    public void trigger() {
+        DummyAction dummy = new DummyAction();
+
+        assertEquals(Math.PI, dummy.trigger());
+    }
+
 }

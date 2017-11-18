@@ -14,164 +14,164 @@ import com.github.dannil.urldatabind.model.bind.result.Action;
  */
 public abstract class AbstractBind {
 
-	protected String path;
-	protected RequestMethod requestMethod;
-	protected Action action;
+    protected String path;
+    protected RequestMethod requestMethod;
+    protected Action action;
 
-	/**
-	 * Overloaded constructor.
-	 * 
-	 * @param path
-	 *            the path
-	 * @param requestMethod
-	 *            the HTTP request method
-	 * @param action
-	 *            the action
-	 */
-	protected AbstractBind(String path, RequestMethod requestMethod, Action action) {
-		if (path == null) {
-			throw new IllegalArgumentException("Path can't be null");
-		}
-		if (requestMethod == null) {
-			throw new IllegalArgumentException("RequestMethod can't be null");
-		}
-		if (action == null) {
-			throw new IllegalArgumentException("Content can't be null");
-		}
-		this.path = path;
-		this.requestMethod = requestMethod;
-		this.action = action;
-	}
+    /**
+     * Overloaded constructor.
+     * 
+     * @param path
+     *            the path
+     * @param requestMethod
+     *            the HTTP request method
+     * @param action
+     *            the action
+     */
+    protected AbstractBind(String path, RequestMethod requestMethod, Action action) {
+        if (path == null) {
+            throw new IllegalArgumentException("Path can't be null");
+        }
+        if (requestMethod == null) {
+            throw new IllegalArgumentException("RequestMethod can't be null");
+        }
+        if (action == null) {
+            throw new IllegalArgumentException("Content can't be null");
+        }
+        this.path = path;
+        this.requestMethod = requestMethod;
+        this.action = action;
+    }
 
-	/**
-	 * Getter for path.
-	 * 
-	 * @return the path
-	 */
-	public String getPath() {
-		return this.path;
-	}
+    /**
+     * Getter for path.
+     * 
+     * @return the path
+     */
+    public String getPath() {
+        return this.path;
+    }
 
-	/**
-	 * Setter for path.
-	 * 
-	 * @param path
-	 *            the path
-	 */
-	public void setPath(String path) {
-		this.path = path;
-	}
+    /**
+     * Setter for path.
+     * 
+     * @param path
+     *            the path
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
 
-	/**
-	 * Getter for request method.
-	 * 
-	 * @return the request method
-	 */
-	public RequestMethod getRequestMethod() {
-		return this.requestMethod;
-	}
+    /**
+     * Getter for request method.
+     * 
+     * @return the request method
+     */
+    public RequestMethod getRequestMethod() {
+        return this.requestMethod;
+    }
 
-	/**
-	 * Setter for request method.
-	 * 
-	 * @param requestMethod
-	 *            the request method
-	 */
-	public void setRequestMethod(RequestMethod requestMethod) {
-		this.requestMethod = requestMethod;
-	}
+    /**
+     * Setter for request method.
+     * 
+     * @param requestMethod
+     *            the request method
+     */
+    public void setRequestMethod(RequestMethod requestMethod) {
+        this.requestMethod = requestMethod;
+    }
 
-	// /**
-	// * Getter for content.
-	// *
-	// * @return the content
-	// */
-	// public E getContent() {
-	// return this.content;
-	// }
-	//
-	// /**
-	// * Setter for content.
-	// *
-	// * @param content
-	// * the content
-	// */
-	// public void setContent(E content) {
-	// this.content = content;
-	// }
+    // /**
+    // * Getter for content.
+    // *
+    // * @return the content
+    // */
+    // public E getContent() {
+    // return this.content;
+    // }
+    //
+    // /**
+    // * Setter for content.
+    // *
+    // * @param content
+    // * the content
+    // */
+    // public void setContent(E content) {
+    // this.content = content;
+    // }
 
-	/**
-	 * Returns the HTTP content of the performed action.
-	 * 
-	 * @return the HTTP content of the performed action
-	 */
-	public Object getHttpContent() {
-		FormatBuilder formatBuilder = FormatBuilder.getInstance();
-		return formatBuilder.getHttpFormat(this.getType(), this.action);
-	}
+    /**
+     * Returns the HTTP content of the performed action.
+     * 
+     * @return the HTTP content of the performed action
+     */
+    public Object getHttpContent() {
+        FormatBuilder formatBuilder = FormatBuilder.getInstance();
+        return formatBuilder.getHttpFormat(this.getType(), this.action);
+    }
 
-	/**
-	 * Converts the bind to JSON format.
-	 * 
-	 * @return the bind as a
-	 *         {@link com.github.dannil.urldatabind.model.bind.JsonBind JsonBind}
-	 */
-	public JsonBind toJson() {
-		return new JsonBind(this.path, this.requestMethod, this.action);
-	}
+    /**
+     * Converts the bind to JSON format.
+     * 
+     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.JsonBind
+     *         JsonBind}
+     */
+    public JsonBind toJson() {
+        return new JsonBind(this.path, this.requestMethod, this.action);
+    }
 
-	/**
-	 * Convert the bind to a plain format.
-	 * 
-	 * @return the bind as a
-	 *         {@link com.github.dannil.urldatabind.model.bind.PlainBind PlainBind}
-	 */
-	public PlainBind toPlain() {
-		return new PlainBind(this.path, this.requestMethod, this.action);
-	}
+    /**
+     * Convert the bind to a plain format.
+     * 
+     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.PlainBind
+     *         PlainBind}
+     */
+    public PlainBind toPlain() {
+        return new PlainBind(this.path, this.requestMethod, this.action);
+    }
 
-	/**
-	 * Converts the bind to XML format.
-	 * 
-	 * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.XmlBind
-	 *         XmlBind}
-	 */
-	public XmlBind toXml() {
-		return new XmlBind(this.path, this.requestMethod, this.action);
-	}
+    /**
+     * Converts the bind to XML format.
+     * 
+     * @return the bind as a {@link com.github.dannil.urldatabind.model.bind.XmlBind
+     *         XmlBind}
+     */
+    public XmlBind toXml() {
+        return new XmlBind(this.path, this.requestMethod, this.action);
+    }
 
-	/**
-	 * Returns the type of the bind.
-	 * 
-	 * @return the type
-	 */
-	public abstract Type getType();
+    /**
+     * Returns the type of the bind.
+     * 
+     * @return the type
+     */
+    public abstract Type getType();
 
-	/**
-	 * Returns the HTTP type of the bind.
-	 * 
-	 * @return the HTTP type
-	 */
-	public abstract String getHttpType();
+    /**
+     * Returns the HTTP type of the bind.
+     * 
+     * @return the HTTP type
+     */
+    public abstract String getHttpType();
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.path, this.requestMethod);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.path, this.requestMethod);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AbstractBind)) {
-			return false;
-		}
-		AbstractBind other = (AbstractBind) obj;
-		return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof AbstractBind)) {
+            return false;
+        }
+        AbstractBind other = (AbstractBind) obj;
+        return Objects.equals(this.path, other.path) && Objects.equals(this.requestMethod, other.requestMethod);
+    }
 
 }
