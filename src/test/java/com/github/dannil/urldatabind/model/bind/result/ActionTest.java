@@ -21,6 +21,7 @@ public class ActionTest {
 	@Test
 	public void trigger() {
 		DummyAction dummy = new DummyAction();
+		
 		assertEquals(Math.PI, dummy.trigger());
 	}
 	

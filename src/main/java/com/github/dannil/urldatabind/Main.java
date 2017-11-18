@@ -1,10 +1,12 @@
 package com.github.dannil.urldatabind;
 
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import com.github.dannil.urldatabind.http.BindHttpServer;
-import com.github.dannil.urldatabind.model.Person;
 import com.github.dannil.urldatabind.model.RequestMethod;
 import com.github.dannil.urldatabind.model.bind.AbstractBind;
 import com.github.dannil.urldatabind.model.bind.JsonBind;
@@ -19,9 +21,9 @@ public class Main {
 		// SQLResult sqlResult = new SQLResult("SELECT * FROM test");
 		// JsonBind jsonBind = new JsonBind("test/abc", RequestMethod.GET, sqlResult);
 		// System.out.println(jsonBind.getHttpContent());
-
-		Person person = new Person("Daniel", "Nilsson");
-		ObjectResult objectResult = new ObjectResult(person);
+		
+		ZonedDateTime dt = ZonedDateTime.now();
+		ObjectResult objectResult = new ObjectResult(dt);
 
 		JsonBind jsonBind2 = new JsonBind("person/daniel/json", RequestMethod.GET, objectResult);
 		XmlBind xmlBind = new XmlBind("person/daniel/xml", RequestMethod.GET, objectResult);

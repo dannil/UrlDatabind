@@ -177,7 +177,7 @@ public class TestIT {
 
 		// Filter out some classes from the list
 		// TODO Fix this filter list when refactoring is complete
-		Filters.files(mainFiles, Main.class, Person.class, BindHttpServer.class, SQLResult.class);
+		Filters.files(mainFiles, Main.class, BindHttpServer.class, SQLResult.class);
 
 		List<Class<?>> matchedClasses = new ArrayList<>();
 		for (File fileMain : mainFiles) {
