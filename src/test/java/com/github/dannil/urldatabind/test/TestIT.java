@@ -77,7 +77,7 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/urldatabind", "*.java");
 
         // Filter out some classes from the list which shouldn't be annotated
-        Filters.files(files, Files.class, Filters.class, IBindTest.class, IEqualsTest.class);
+        Filters.files(files, Files.class, Filters.class, IBindTest.class, IEqualsTest.class, Main.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
