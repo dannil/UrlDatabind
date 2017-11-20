@@ -17,8 +17,8 @@ public class Main {
         ZonedDateTime dt = ZonedDateTime.now();
         ObjectResult objectResult = new ObjectResult(dt);
 
-        JsonBind jsonBind2 = new JsonBind("person/daniel/json", RequestMethod.GET, objectResult);
-        XmlBind xmlBind = new XmlBind("person/daniel/xml", RequestMethod.GET, objectResult);
+        JsonBind jsonBind2 = new JsonBind("date/now/json", RequestMethod.GET, objectResult);
+        XmlBind xmlBind = new XmlBind("date/now/xml", RequestMethod.GET, objectResult);
     }
 
 }
