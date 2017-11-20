@@ -164,7 +164,8 @@ public abstract class AbstractBind {
     public abstract Type getType();
 
     /**
-     * <p>Returns the HTTP type of the bind.</p>
+     * <p>Returns the HTTP type of the bind, as specified by <a
+     * href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA</a>.</p>
      *
      * @return the HTTP type
      */
