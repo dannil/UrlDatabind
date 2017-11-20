@@ -83,7 +83,7 @@ public class TestIT {
         for (File file : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(file);
-
+            
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
             try {
@@ -181,6 +181,9 @@ public class TestIT {
         for (File fileMain : mainFiles) {
             // Convert path into binary name
             String binaryNameMain = Files.fileToBinaryName(fileMain);
+            if (binaryNameMain.contains("package-info")) {
+                continue;
+            }
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
