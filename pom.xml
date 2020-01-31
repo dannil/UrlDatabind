@@ -72,7 +72,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20</version>
+        <version>3.0.0-M4</version>
         <configuration>
           <forkCount>3</forkCount>
           <reuseForks>true</reuseForks>
@@ -81,7 +81,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.20</version>
+        <version>3.0.0-M4</version>
         <executions>
           <execution>
             <id>integration-test</id>
@@ -100,7 +100,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.9</version>
+        <version>0.8.5</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent 
             which -->
